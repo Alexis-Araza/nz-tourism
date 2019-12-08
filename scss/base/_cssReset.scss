@@ -1,0 +1,141 @@
+* {
+	margin: 10px;
+	padding: 0;
+	background-color: #3E7EBC;
+	scroll-behavior: smooth; 
+}
+
+
+
+
+
+/*mobile [iPhone 6/7/8]*/
+
+@media only screen and (max-width: 375px) {
+.searchInput {
+	height: 200vh;
+}
+
+.userStay {
+	margin-top: 20px;
+	height: 40vh;
+}
+
+.userGuest {
+	margin-top: 40px;
+}
+
+.stay-title, .guest-title {
+	font-size: 44px;
+	margin-bottom: 20px;
+}
+
+.userLocation {
+	margin-top: 60px;
+	top: 100px;
+}
+
+
+
+
+
+.row {
+	margin: 0 auto;
+	padding: 0;
+	width: 300px;
+}
+
+.container__main {
+	background-color: #3E7EBC;
+	margin: 0 auto;
+	height: 430vh;
+	border-style: 0px none;
+}
+
+#acomStay {
+	margin: 0 auto;
+	padding: 0;
+}
+
+.modal {
+	margin: 0 auto;
+	padding: 0;
+	background: none;
+	cursor: pointer;
+	height: 650px;
+}
+
+
+.modal-content {
+	margin: 0 auto;
+	padding: 0;
+	width: 360px;
+}
+
+.fade {
+	margin: 0 auto;
+	padding: 0;
+	margin-left: 5px;
+}
+
+.stay1, .stay2, .stay3 {
+	float: left; 
+	cursor: pointer;
+	border: 3px black solid;
+	background: none;
+	width: 340px;
+}
+
+}
+
+
+
+
+/*desktop*/
+// .row {
+// 	margin: 0 auto;
+// 	padding: 0;
+// 	width: 300px;
+// }
+
+// .container__main {
+// 	background-color: #3E7EBC;
+// 	margin: 0 auto;
+// 	height: 100%;
+// }
+
+// #acomStay {
+// 	margin: 0 auto;
+// 	padding: 0;
+// }
+
+// .modal {
+// 	margin: 0 auto;
+// 	padding: 0;
+// 	background: none;
+// 	cursor: pointer;
+// }
+
+// .modal-dialog {
+// 	margin: 0 auto;
+// 	padding: 0;
+// 	top: 100px;
+// }
+
+// .modal-content {
+// 	margin: 0 auto;
+// 	padding: 0;
+// 	width: 600px;
+// }
+
+// .fade {
+// 	margin: 0 auto;
+// }
+
+// .stay1, .stay2, .stay3 {
+// 	float: left; 
+// 	cursor: pointer;
+// 	border: 3px black solid;
+// 	background: none;
+// 	width: 310px;
+// }

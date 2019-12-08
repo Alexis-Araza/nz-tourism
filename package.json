@@ -1,0 +1,22 @@
+{
+  "name": "nz-tourism",
+  "version": "1.0.0",
+  "description": "single page nz tourism accommodation app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alexis-Araza/nz-tourism.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alexis-Araza/nz-tourism/issues"
+  },
+  "homepage": "https://github.com/Alexis-Araza/nz-tourism#readme",
+  "dependencies": {
+    "fecha": "^3.0.3"
+  }
+}

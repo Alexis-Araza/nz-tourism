@@ -1,0 +1,9 @@
+# ignore node_modules
+node_modules
+
+#ignnore jquery
+jquery-ui-1.12.1
+jquery-ui-themes-1.12.1
+
+#ignore bootstrap
+bootstrap-4.3.1-dist
