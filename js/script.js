@@ -64,7 +64,6 @@ var accommodation = [
 
 
 //date calculation with date pickers
-
 $("#startDate").datepicker({
   dateFormat: 'yy-mm-dd',
   changeMonth: true,
@@ -103,9 +102,60 @@ function dateDiff() {
   var end = $('#endDate').datepicker('endDate');
   var days = (end - start)/1000/60/60/24;
 
-  console.log(days);
-  return;
+    console.log(days);
+    return days;
 };
+
+function guestsAmount() {
+
+  var guestsString = $('#guests').val();
+  var guests = parseInt(guestsString);
+
+    console.log(guests);
+    return guests;
+};
+
+function placePick() {
+
+  var placeString = $('#place').val();
+  var place = parseInt(placeString);
+
+    console.log(place);
+    return place;
+};
+
+
+
+
+
+function generalFilter() {
+  var result = filterGuests(accommodation); 
+  result = filterNights(result);
+  displayOptions(result);
+  data.filteredAccommodation = result;
+  return result;
+}
+
+
+
+
+
+$('#acomList').click(function(){
+
+  var nights = dateDiff();
+  var guests = guestsAmount();
+  var place = placePick();
+  var arrivalDate = $('#startDate').datepicker({ dateFormat: 'dd-mm-yy' }).val();
+  var departDate = $('#endDate').datepicker({ dateFormat: 'dd-mm-yy' }).val();
+  saveData(arrivalDate, departDate, guests, nights);
+
+    var result = generalFilter();
+    initMap();
+
+      document.getElementById('staySynopsis').innerHTML =
+      '<p> You will be in ' + place + ' for ' + nights + 'nights, between' + formatDate (arrivalDate) + ' & ' + formatDate (departDate) + ' with ' + guests + ' guests.</p>'
+});
+
 
 
 
@@ -144,292 +194,292 @@ function showSlides(n) {
 
 
 
-// function to decalre varibles, read and get value
-function getInfo(){
+// // function to decalre varibles, read and get value
+// function getInfo(){
 
-  var days, selectGuest, place, selectPlace, guest, start, end;
+//   var days, selectGuest, place, selectPlace, guest, start, end;
 
-  place = document.getElementById('place');
-  selectPlace = place.options[place.selectedIndex].text;
+//   place = document.getElementById('place');
+//   selectPlace = place.options[place.selectedIndex].text;
 
-  guest = document.getElementById('adults');
-  selectGuest = guest.options[guest.selectedIndex].text;
+//   guest = document.getElementById('adults');
+//   selectGuest = guest.options[guest.selectedIndex].text;
 
-  start = $('#startDate').datepicker('startDate');
-  end = $('#endDate').datepicker('endDate');
+//   start = $('#startDate').datepicker('startDate');
+//   end = $('#endDate').datepicker('endDate');
 
-  days = dateDiff();
+//   days = dateDiff();
 
-};
-
-
-
-
-
-var selected = [];
-
-// Filter the options based on user's input
-var selectedArray =[];
+// };
 
 
 
 
 
-function filter(){
+// var selected = [];
 
-  getInfo();
-  console.log(selectPlace, selectGuest, days);
-  document.getElementById('searchInput').innerHTML = '';
-
-    for(var i=0; i< accommodation.length; i++){
-      console.log(selectPlace,accommodation[i].city);
-
-      if ((selectPlace === accommodation[i].city)
-           && (days >= accommodation[i].minNight) && (days <= accommodation[i].maxNight)){
-            console.log(accommodation[i]);
-        	displayAccommodation(i);
-       }
-
-      }
-    console.log(selectPlace, days);
-    console.log(accommodation[i]);
-
-    id ++;
-  };
+// // Filter the options based on user's input
+// var selectedArray =[];
 
 
 
 
 
- // display summary of trip selection details
- function displaystayDesc(){
-   getInfo();
+// function filter(){
 
-   // convert date picker to string
-   var dateStart = $.datepicker.formatDate('dd-mm-yy', start);
-   var dateEnd = $.datepicker.formatDate('dd-mm-yy', end);
+//   getInfo();
+//   console.log(selectPlace, selectGuest, days);
+//   document.getElementById('searchInput').innerHTML = '';
 
-   console.log(typeof selectPlace, typeof selectGuest, typeof startDate, typeof endDate , typeof days);
+//     for(var i=0; i< accommodation.length; i++){
+//       console.log(selectPlace,accommodation[i].city);
 
-   document.getElementById('stayDesc').innerHTML ='';
-   document.getElementById('stayDesc').innerHTML
-   += startDate + endDate + selectGuest + selectPlace + days;
- };
+//       if ((selectPlace === accommodation[i].city)
+//            && (days >= accommodation[i].minNight) && (days <= accommodation[i].maxNight)){
+//             console.log(accommodation[i]);
+//         	displayAccommodation(i);
+//        }
 
+//       }
+//     console.log(selectPlace, days);
+//     console.log(accommodation[i]);
 
-
-
-var id = 101;
-function displayAccommodation(s) {
-  displaystayDesc();
-
-  var days = dateDiff();
-  var total = accommodation[s].price * days;
-
-
-  document.getElementById('acomStay').innerHTML
-+= '<div class="stay1" type="button" data-toggle="modal" data-target="#myModal">'
-+		'<div class="row">'
-+			'<center>'
-+				'<img src="images/accommodation/aptMain.jpg">'
-+				'<h2>' + accommodation[s].name + '</h2>'
-
-+				'<p id="stayList">' + accommodation[s].address + ' </p>'
-+				'<br>'
-
-+				'<p> $' + accommodation[s].price + ' per night</p>'
-+			'</center>'
-+		'</div>'
-+	'</div>';
-};
+//     id ++;
+//   };
 
 
 
 
 
-// move from search to accommdation list result
-document.getElementById('acomList').addEventListener('click', function(){
-    validate();
-  });
+//  // display summary of trip selection details
+//  function displaystayDesc(){
+//    getInfo();
+
+//    // convert date picker to string
+//    var dateStart = $.datepicker.formatDate('dd-mm-yy', start);
+//    var dateEnd = $.datepicker.formatDate('dd-mm-yy', end);
+
+//    console.log(typeof selectPlace, typeof selectGuest, typeof startDate, typeof endDate , typeof days);
+
+//    document.getElementById('stayDesc').innerHTML ='';
+//    document.getElementById('stayDesc').innerHTML
+//    += startDate + endDate + selectGuest + selectPlace + days;
+//  };
 
 
 
 
-// show stay list
-function validate() {
-  place = document.getElementById('place');
-  selectPlace = place.options[place.selectedIndex].text;
+// var id = 101;
+// function displayAccommodation(s) {
+//   displaystayDesc();
 
-  guest = document.getElementById('adults');
-  selectGuest = guest.options[guest.selectedIndex].text;
-
-  start = $('#startDate').datepicker('startDate');
-  end = $('#endDate').datepicker('endDate');
-
-    filter();
-  };
-
-document.getElementById('acomList').addEventListener('click', function(){
-var x = document.getElementById('acomStay');
-  if (x.style.display === "show") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "show";
-  }   
-}
-);
+//   var days = dateDiff();
+//   var total = accommodation[s].price * days;
 
 
+//   document.getElementById('acomStay').innerHTML
+// += '<div class="stay1" type="button" data-toggle="modal" data-target="#myModal">'
+// +		'<div class="row">'
+// +			'<center>'
+// +				'<img src="images/accommodation/aptMain.jpg">'
+// +				'<h2>' + accommodation[s].name + '</h2>'
+
+// +				'<p id="stayList">' + accommodation[s].address + ' </p>'
+// +				'<br>'
+
+// +				'<p> $' + accommodation[s].price + ' per night</p>'
+// +			'</center>'
+// +		'</div>'
+// +	'</div>';
+// };
 
 
 
 
-console.log('location details');
-// Depending on the number of days the user books, fees to be calculated
 
-// $('#map').hide();
-
-// $(document).ready(function(){
-//   $('#details').click(function(){
-//     $('#map').show();
-
-    //reading user data
-    // var place=document.getElementById('#place').value;
-    // console.log(place);
-    // initMap(place);
+// // move from search to accommdation list result
+// document.getElementById('acomList').addEventListener('click', function(){
+//     validate();
 //   });
 
-// });
 
 
-// var steakQuantity = parseInt(prompt("how many steaks would you like?"));
-// var sauceQuantity = 0;
 
-// if (steakQuantity >= 2) {
-// 	console.log ("You will get a free sauce on the side!");
-// 	var sauce = prompt("would you like sauce with that?");
+// // show stay list
+// function validate() {
+//   place = document.getElementById('place');
+//   selectPlace = place.options[place.selectedIndex].text;
+
+//   guest = document.getElementById('adults');
+//   selectGuest = guest.options[guest.selectedIndex].text;
+
+//   start = $('#startDate').datepicker('startDate');
+//   end = $('#endDate').datepicker('endDate');
+
+//     filter();
+//   };
+
+// document.getElementById('acomList').addEventListener('click', function(){
+// var x = document.getElementById('acomStay');
+//   if (x.style.display === "show") {
+//     x.style.display = "block";
+//   } else {
+//     x.style.display = "show";
+//   }   
 // }
-
-// if (sauce ==="yes") {
-// 	var steakQuantity = parseInt(prompt("how much sauce would you like?"));
-
-// 	}
-
-
-// console.log(steakQuantity,sauceQuantity);
-// var steakCost = steakQuantity * 25.60 + sauceQuantity * 2;
-
-// console.log(steakCost);
-// document.getElementById('result').innerHTML = "steakCost=" + steakCost + sauceQuantity;
+// );
 
 
 
 
-//accessing apiKey from external JSON file
-var myKey = JSON.parse(apiKey);
-console.log(myKey[0].key);
 
 
-//array of objects for place details
-var locations = [
-  {
-    name : "Lyall Bay",
-    place: "Wellington",
-    distance : "5.6 Km",
-    travelDuration: 19,
-    lat:-41.3269,
-    long:174.7953
-  },
-  {
-    name : "Days Bay",
-    place: "Wellington",
-    distance : "23.5 Km",
-    travelDuration: 40,
-    lat:-41.2816,
-    long:174.9068
-  },
-  {
-    name : "Oriental Bay",
-    place: "Wellington",
-    distance : "1.6 Km",
-    travelDuration: 7,
-    lat:-41.2913,
-    long:174.7941
-  },
-] //end of array of objects
+// console.log('location details');
+// // Depending on the number of days the user books, fees to be calculated
+
+// // $('#map').hide();
+
+// // $(document).ready(function(){
+// //   $('#details').click(function(){
+// //     $('#map').show();
+
+//     //reading user data
+//     // var place=document.getElementById('#place').value;
+//     // console.log(place);
+//     // initMap(place);
+// //   });
+
+// // });
 
 
-//dynamically creating script tag and appending to the html body including the apikey
-var script = document.createElement('script');
-script.src = 'https://maps.googleapis.com/maps/api/js?key='+ myKey[0].key ;
-document.getElementsByTagName('body')[0].appendChild(script);
+// // var steakQuantity = parseInt(prompt("how many steaks would you like?"));
+// // var sauceQuantity = 0;
 
-//function to bring map and its components
-function initMap(p,d) {
-  console.log(p,d);
-    // var center = {lat: -41.2911449, lng: 174.7814447}; ;
+// // if (steakQuantity >= 2) {
+// // 	console.log ("You will get a free sauce on the side!");
+// // 	var sauce = prompt("would you like sauce with that?");
+// // }
 
-    var oldwindow;
-    var center;
+// // if (sauce ==="yes") {
+// // 	var steakQuantity = parseInt(prompt("how much sauce would you like?"));
 
-    if (p === "Wellington") {
-      center = {lat: -41.2911449, lng: 174.7814447};
-      zoom = 14;
-    }
-    console.log(chosenLocation);
+// // 	}
 
 
-    var map = new google.maps.Map(
-      document.getElementById("map"), {zoom: zoom, center: location});
+// // console.log(steakQuantity,sauceQuantity);
+// // var steakCost = steakQuantity * 25.60 + sauceQuantity * 2;
 
-
-    for(var i=0; i<accommodation.length; i++ ){
-      for (var j = 0; j < d.length; j++) {
-
-
-      console.log(d[j], accommodation[i].id);
-      if (d[j] === accommodation[i].id) {
-
-        console.log(accommodation[i].id);
-         // create content dynamically
-         var contentString
-           = '<a href="' + accommodation[i].website + '" target="_blank"><img class="marker-img-size thumbnail" src="'+ accommodation[i].photo1 + '" alt="photo"></a>'
-           + '<h6 class="pt-1">' + accommodation[i].name + '</h6>'
-           + '<p>$' + accommodation[i].price + ' /night </p>';
+// // console.log(steakCost);
+// // document.getElementById('result').innerHTML = "steakCost=" + steakCost + sauceQuantity;
 
 
 
-       // create infowindow
-     var infowindow = new google.maps.InfoWindow({ content: contentString });
+
+// //accessing apiKey from external JSON file
+// var myKey = JSON.parse(apiKey);
+// console.log(myKey[0].key);
 
 
-      // position to add marker
-      var position = {lat: accommodation[i].latitude, lng: accommodation[i].longitude};
+// //array of objects for place details
+// var locations = [
+//   {
+//     name : "Lyall Bay",
+//     place: "Wellington",
+//     distance : "5.6 Km",
+//     travelDuration: 19,
+//     lat:-41.3269,
+//     long:174.7953
+//   },
+//   {
+//     name : "Days Bay",
+//     place: "Wellington",
+//     distance : "23.5 Km",
+//     travelDuration: 40,
+//     lat:-41.2816,
+//     long:174.9068
+//   },
+//   {
+//     name : "Oriental Bay",
+//     place: "Wellington",
+//     distance : "1.6 Km",
+//     travelDuration: 7,
+//     lat:-41.2913,
+//     long:174.7941
+//   },
+// ] //end of array of objects
 
-      // create marker
-       var myIcon = 'http://maps.google.com/mapfiles/kml/pal3/icon56.png';
-       var marker =  new google.maps.Marker({
-         position: position,
-         map: map,
-       });
 
-       newWindow(marker, infowindow);
+// //dynamically creating script tag and appending to the html body including the apikey
+// var script = document.createElement('script');
+// script.src = 'https://maps.googleapis.com/maps/api/js?key='+ myKey[0].key ;
+// document.getElementsByTagName('body')[0].appendChild(script);
 
-       function newWindow(newMarker, newInfowindow){
+// //function to bring map and its components
+// function initMap(p,d) {
+//   console.log(p,d);
+//     // var center = {lat: -41.2911449, lng: 174.7814447}; ;
 
-         newMarker.addListener('click', function() {
+//     var oldwindow;
+//     var center;
 
-           if( oldwindow){
-             oldwindow.close();
-           }
-           newInfowindow.open(map, newMarker);
-           oldwindow = newInfowindow;
-         }); // end of addListener
+//     if (p === "Wellington") {
+//       center = {lat: -41.2911449, lng: 174.7814447};
+//       zoom = 14;
+//     }
+//     console.log(chosenLocation);
 
-       } // end of newWindow function
-     }
-    } // end of for
 
- } // end of for
+//     var map = new google.maps.Map(
+//       document.getElementById("map"), {zoom: zoom, center: location});
 
-} //initMap ENDS
+
+//     for(var i=0; i<accommodation.length; i++ ){
+//       for (var j = 0; j < d.length; j++) {
+
+
+//       console.log(d[j], accommodation[i].id);
+//       if (d[j] === accommodation[i].id) {
+
+//         console.log(accommodation[i].id);
+//          // create content dynamically
+//          var contentString
+//            = '<a href="' + accommodation[i].website + '" target="_blank"><img class="marker-img-size thumbnail" src="'+ accommodation[i].photo1 + '" alt="photo"></a>'
+//            + '<h6 class="pt-1">' + accommodation[i].name + '</h6>'
+//            + '<p>$' + accommodation[i].price + ' /night </p>';
+
+
+
+//        // create infowindow
+//      var infowindow = new google.maps.InfoWindow({ content: contentString });
+
+
+//       // position to add marker
+//       var position = {lat: accommodation[i].latitude, lng: accommodation[i].longitude};
+
+//       // create marker
+//        var myIcon = 'http://maps.google.com/mapfiles/kml/pal3/icon56.png';
+//        var marker =  new google.maps.Marker({
+//          position: position,
+//          map: map,
+//        });
+
+//        newWindow(marker, infowindow);
+
+//        function newWindow(newMarker, newInfowindow){
+
+//          newMarker.addListener('click', function() {
+
+//            if( oldwindow){
+//              oldwindow.close();
+//            }
+//            newInfowindow.open(map, newMarker);
+//            oldwindow = newInfowindow;
+//          }); // end of addListener
+
+//        } // end of newWindow function
+//      }
+//     } // end of for
+
+//  } // end of for
+
+// } //initMap ENDS

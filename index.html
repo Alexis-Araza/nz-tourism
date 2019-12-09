@@ -1,229 +1,232 @@
 <!DOCTYPE HTML>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.css"/>
+	<link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.css"/>
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style.css">
 
-    <title>New Zealand Tourism</title>
+	<title>New Zealand Tourism</title>
 
-  </head>
-  <body>
-
-
-<div class="container__main">
+	</head>
+		<body>
 
 
-
-
-<div class="searchInput">
-  <form>
-  <div class="userStay">
-
-    <h2 class="stay-title">How long's your stay?</h2>
-
-    <input type="text" id="startDate" name="startDate" class="mr-5" placeholder="Arrival">
-
-    <input type="text" id="endDate" name="endDate" placeholder="Departure">
-
-  </div>
+		<div class="container__main">
 
 
 
 
+				<div class="searchInput">
+					<form>
+						<div class="userStay">
 
-  <div class="userGuest">
+							<h2 class="stay-title">How long's your stay?</h2>
 
-    <h2 class="guest-title">How many are with you?</h2>
+							<input type="text" id="startDate" name="startDate" placeholder="Arrival">
 
-        <div id="userInput">
-          <select class="form-control" id="adults" name="guest">
-             <option selected="" disabled selected hidden>Adults</option>         
-             <option value="adult1">1</option>
-             <option value="adult2">2</option>
-             <option value="adult3">3</option>
-             <option value="adult4">4</option>
-          </select>
-        </div>
+							<input type="text" id="endDate" name="endDate" placeholder="Departure">
 
-    <button id="acomLocation" type="button" name="btn1">
-      <a href="#mapPage">Confirm</a>
-    </button>
-
-  </div>
+						</div>
 
 
 
 
 
-  <div class="userLocation" id="mapPage">
-        
-        <div id="userInput">
-          <label for="place"></label>
-          <select class="form-control" id="place" name="location" required>
-             <option selected="" disabled selected hidden>Where are you staying?</option>
-             <option value="Auckland">Auckland</option>
-             <option value="Wellington">Wellington</option>
-             <option value="Christchurch">Christchurch</option>
-             <option value="Dunedin">Dunedin</option>
-             <option value="Queenstown">Queenstown</option>
-             <option value="Rotorua">Rotorua</option>
-             <option value="Waikato">Waikato</option>
-          </select>
-        </div>
+					<div class="userGuest">
+						<div id="userInput">
+							<h2 class="guest-title">How many are with you?</h2>
 
 
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6672039.285451262!2d168.21007285079892!3d-42.76527698251775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d2c200e17779687%3A0xb1d618e2756a4733!2sNew%20Zealand!5e0!3m2!1sen!2snz!4v1575787590691!5m2!1sen!2snz" width="280" height="420" frameborder="0" style="position: absolute; right: 40px; top: 790px; border-style: none;margin: 0 auto; padding: 0;" allowfullscreen=""></iframe>
+							<select class="form-control" id="adults" name="guest">
+								<option selected="" disabled selected hidden>Adults</option>         
+								<option value="adult1">1</option>
+								<option value="adult2">2</option>
+								<option value="adult3">3</option>
+								<option value="adult4">4</option>
+							</select>
+						</div>
 
-<div id="map"></div> 
+						<button id="acomLocation" type="button" name="btn1">
+						<a href="#mapPage">Confirm</a>
+						</button>
 
-
-      <button id="acomList" type="button" name="btn2">
-      <a href="#acomStay">Confirm</a>
-      </button>
-
-
-	</div>
-</form>
-</div>
+					</div>
 
 
 
 
 
-<div id="acomStay">
+					<div class="userLocation" id="mapPage">
 
-		<div class="stay1" type="button" data-toggle="modal" data-target="#myModal">
-			<div class="row">
-        <div id="stayDesc">
-	      <img src="images/accommodation/aptMain.jpg" class="acom-img">
-				<h2 class="list-name">Central CBD Apartment</h2>
-				<p class="stay-list">
-					28-8 Egmont Street, Te Aro
-          <br>
-          196</p>
+						<div id="userInput">
+							<label for="place"></label>
+							<select class="form-control" id="place" name="location" required>
+								<option selected="" disabled selected hidden>Where are you staying?</option>
+								<option value="Auckland">Auckland</option>
+								<option value="Wellington">Wellington</option>
+								<option value="Christchurch">Christchurch</option>
+								<option value="Dunedin">Dunedin</option>
+								<option value="Queenstown">Queenstown</option>
+								<option value="Rotorua">Rotorua</option>
+								<option value="Waikato">Waikato</option>
+							</select>
+						</div>
+
+
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6672039.285451262!2d168.21007285079892!3d-42.76527698251775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d2c200e17779687%3A0xb1d618e2756a4733!2sNew%20Zealand!5e0!3m2!1sen!2snz!4v1575787590691!5m2!1sen!2snz" width="280" height="420" frameborder="0" style="position: absolute; right: 40px; top: 790px; border-style: none;margin: 0 auto; padding: 0;" allowfullscreen=""></iframe>
+
+					<div id="map"></div> 
+
+
+						<button id="acomList" type="button" name="btn2">
+						<a href="#acomStay">Confirm</a>
+						</button>
+
+
+					</div>
+
+					</form>
+
+				</div>
+
+
+
+
+
+			<div id="acomStay">
+				<div id="staySynopsis"></div>
+
+				<div class="stay1" type="button" data-toggle="modal" data-target="#myModal">
+					<div class="row">
+						<div id="stayDesc">
+							<img src="images/accommodation/aptMain.jpg" class="acom-img">
+							<h2 class="list-name">Central CBD Apartment</h2>
+							<p class="stay-list">
+							28-8 Egmont Street, Te Aro
+							<br>
+							196</p>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="stay2">
+					<div class="row">
+						<div id="stayDesc">
+							<img src="images/accommodation/sailMain.jpg" class="acom-img">
+							<h2 class="list-name">The Old Sailor's Villa in the City</h2>
+							<p class="stay-list">
+							42 Roxburgh Street, Mount Victoria
+							<br>
+							200</p>
+						</div>
+					</div> 
+				</div>
+
+
+				<div class="stay3">
+					<div class="row">
+						<div id="stayDesc">
+							<img src="images/accommodation/villaMain.jpg" class="acom-img">
+							<h2 class="list-name">French-style Villa by by the beach front</h2>
+							<p class="stay-list">
+							387 Karaka Bay Road, Karaka Bays
+							<br>
+							310</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		<!-- </div> -->
+
+
+
+
+
+
+
+		<!-- Modal content-->
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Central CBD Apartment</h4>
+						<button type="button" class="close" data-dismiss="modal" id="close">&times;</button>
+					</div>
+
+					<div class="mySlides">
+						<div class="numbertext">1 / 3</div>
+						<img src="images/accommodation/apt1.jpg" class="m-img">
+					</div>
+
+					<div class="mySlides">
+						<div class="numbertext">2 / 3</div>
+						<img src="images/accommodation/apt2.jpg" class="m-img">
+					</div>
+
+					<div class="mySlides">
+						<div class="numbertext">3 / 3</div>
+						<img src="images/accommodation/apt3.jpg" class="m-img">
+					</div>
+
+					<!-- Next/previous controls -->
+					<a class="prev" onclick="plusSlides(-1)" style="color: #f2f2f2">&#10094;</a>
+					<a class="next" onclick="plusSlides(1)" style="color: #f2f2f2">&#10095;</a>
+
+
+
+					<div class="modal-body">
+
+						<p>One bedroom apartment with tonnes of character in one of Wellingtons most iconic central city alleyways, located only minutes walk to all on offer in the CBD and waterfront.
+						</p>
+						<br>
+						<p>
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2997.710473633682!2d174.7750815795289!3d-41.2934052793744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d38afd9e763e2e1%3A0xf8fc2948976e27fb!2s28%20Egmont%20Street%2C%20Te%20Aro%2C%20Wellington%206011!5e0!3m2!1sen!2snz!4v1575824915404!5m2!1sen!2snz" width="290" height="100" frameborder="0" style="border-style: none;margin: 0 auto; padding: 0;" allowfullscreen=""></iframe>
+						</p>
+						<br>
+						<p> Insert Cost p night </p>
+
+					</div>
 				</div>
 			</div>
-  </div>
-
-
-		<div class="stay2">
-	      <div class="row">
-	      <div id="stayDesc">
-	      <img src="images/accommodation/sailMain.jpg" class="acom-img">
-	      <h2 class="list-name">The Old Sailor's Villa in the City</h2>
-	      <p class="stay-list">
-	        42 Roxburgh Street, Mount Victoria
-	      <br>
-          200</p>
-	      </div>
-	    </div> 
-	  </div>
-
-
-		<div class="stay3">
-	      <div class="row">
-	      <div id="stayDesc">
-	      <img src="images/accommodation/villaMain.jpg" class="acom-img">
-	      <h2 class="list-name">French-style Villa by by the beach front</h2>
-	      <p class="stay-list">
-	        387 Karaka Bay Road, Karaka Bays
-	      <br>
-          310</p>
-	      </div>
-	    </div> 
-	  </div>
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-	<!-- Modal content-->
-	<div class="modal fade" id="myModal" role="dialog">
-	<div class="modal-dialog">
-
-	<div class="modal-content">
-		<div class="modal-header">
-      <h4 class="modal-title">Central CBD Apartment</h4>
-			<button type="button" class="close" data-dismiss="modal" id="close">&times;</button>
 		</div>
 
-		<div class="mySlides">
-			<div class="numbertext">1 / 3</div>
-			<img src="images/accommodation/apt1.jpg" class="m-img">
+
+
+
+
 		</div>
 
-		<div class="mySlides">
-			<div class="numbertext">2 / 3</div>
-			<img src="images/accommodation/apt2.jpg" class="m-img">
-		</div>
 
-		<div class="mySlides">
-			<div class="numbertext">3 / 3</div>
-			<img src="images/accommodation/apt3.jpg" class="m-img">
-		</div>
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="js/jquery.js"></script>
 
-		<!-- Next/previous controls -->
-		<a class="prev" onclick="plusSlides(-1)" style="color: #f2f2f2">&#10094;</a>
-		<a class="next" onclick="plusSlides(1)" style="color: #f2f2f2">&#10095;</a>
+		<script
+		src="https://code.jquery.com/jquery-1.12.1.js"
+		integrity="sha256-VuhDpmsr9xiKwvTIHfYWCIQ84US9WqZsLfR4P7qF6O8="
+		crossorigin="anonymous"></script>
 
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script>
 
-		<div class="modal-body">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
 
-			<p>One bedroom apartment with tonnes of character in one of Wellingtons most iconic central city alleyways, located only minutes walk to all on offer in the CBD and waterfront.
-	</p>
-			<br>
-			<p>
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2997.710473633682!2d174.7750815795289!3d-41.2934052793744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d38afd9e763e2e1%3A0xf8fc2948976e27fb!2s28%20Egmont%20Street%2C%20Te%20Aro%2C%20Wellington%206011!5e0!3m2!1sen!2snz!4v1575824915404!5m2!1sen!2snz" width="290" height="100" frameborder="0" style="border-style: none;margin: 0 auto; padding: 0;" allowfullscreen=""></iframe>
-			</p>
-			<br>
-			<p> Insert Cost p night </p>
+		<script src="js/config.json"></script>
 
-		</div>
-	</div>
-	</div>
-	</div>
+		<script src="js/script.js"></script>
 
-
-
-
-
-</div>
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="js/jquery.js"></script>
-
-  <script
-  src="https://code.jquery.com/jquery-1.12.1.js"
-  integrity="sha256-VuhDpmsr9xiKwvTIHfYWCIQ84US9WqZsLfR4P7qF6O8="
-  crossorigin="anonymous"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
-
-  <script src="js/config.json"></script>
-
-  <script src="js/script.js"></script>
-
-  </body>
+		</body>
 </html>
