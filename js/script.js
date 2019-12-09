@@ -14,7 +14,7 @@ var accommodation = [
     photo2: 'images/accommodation/apt2.jpg',
     photo3: 'images/accommodation/apt3.jpg',
     website: 'https://www.airbnb.co.nz/rooms/28409550?adults=2&children=2&source_impression_id=p3_1575511028_xMP639FGSYUpXt8f',
-    location: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3817.4342885579204!2d174.7754313158753!3d-41.292764979272974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDE3JzM0LjAiUyAxNzTCsDQ2JzM5LjQiRQ!5e1!3m2!1sen!2snz!4v1575511106221!5m2!1sen!2snz',
+    location: 'https://www.google.com/maps/search/?api=1&query=-41.292765, 174.777620',
     minNight: 2,
     maxNight: 5,
     price: 196
@@ -33,7 +33,7 @@ var accommodation = [
     photo2: 'images/accommodation/sail2.jpg',
     photo3: 'images/accommodation/sail3.jpg',
     website: 'https://www.airbnb.co.nz/rooms/12057365?adults=2&children=2&previous_page_section_name=1000&search_id=7f386995-966e-6fb6-5a86-ad34668757fc&federated_search_id=9faa7c54-9add-4324-b5f6-cfb6decbef48',
-    location: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3817.4219109875335!2d174.78442321593963!3d-41.29297457927296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d38afcf790c45d9%3A0x51b7ed402a5b1e9!2s42%20Roxburgh%20Street%2C%20Mount%20Victoria%2C%20Wellington%206011!5e1!3m2!1sen!2snz!4v1575509652067!5m2!1sen!2snz',
+    location: 'https://www.google.com/maps/search/?api=1&query=-41.292917, 174.786514',
     minNight: 2,
     maxNight: 10,
     price: 200
@@ -52,7 +52,7 @@ var accommodation = [
     photo2: 'images/accommodation/villa2.jpg',
     photo3: 'images/accommodation/villa3.jpg',
     website: 'https://www.airbnb.co.nz/rooms/14168822?adults=2&children=2&guests=1&source_impression_id=p3_1575511819_gtNgz1%2BOFsU2KLrj&s_tag=tTc_nCHs',
-    location: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d954.1780650775095!2d174.8306598292629!3d-41.30510199870447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDE4JzE4LjQiUyAxNzTCsDQ5JzUyLjQiRQ!5e1!3m2!1sen!2snz!4v1575511838121!5m2!1sen!2snz',
+    location: 'https://www.google.com/maps/search/?api=1&query=-41.305102, 174.831207',
     minNight: 3,
     maxNight: 15,
     price: 310
@@ -134,13 +134,13 @@ function generalFilter() {
   displayOptions(result);
   data.filteredAccommodation = result;
   return result;
-}
+};
 
 
 
 
 
-$('#acomList').click(function(){
+document.getElementById('acomList').addEventListener('click', function(){
 
   var nights = dateDiff();
   var guests = guestsAmount();
@@ -371,6 +371,317 @@ function showSlides(n) {
 
 // // console.log(steakCost);
 // // document.getElementById('result').innerHTML = "steakCost=" + steakCost + sauceQuantity;
+
+
+
+
+
+//Google Maps API key
+var myKey = JSON.parse(apiKey);
+console.log(myKey);
+
+var script = document.createElement('script');
+script.src='https://maps.googleapis.com/maps/api/js?key='+ myKey[0].key + '&callback=initMap';
+document.getElementsByTagName('body')[0].appendChild(script);
+
+var map;
+// var markers =[];
+
+// function clearMarkers(){
+//     for (let i = 0; i < markers.length; i++) {
+//         markers[i].setMap(null);
+//     }
+// }
+
+function initMap() {
+    // var array = data.filteredAccommodation;
+    // var searchButton = document.getElementById('acomList');
+var styleMap = new google.maps.styleMap (
+  [
+  {"elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#ebe3cd"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#523735"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#f5f1e6"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#c9b2a6"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#dcd2be"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#ae9e90"
+      }
+    ]
+  },
+  {
+    "featureType": "landscape.natural",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#dfd2ae"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#dfd2ae"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#93817c"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#a5b076"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#447530"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#f5f1e6"
+      }
+    ]
+  },
+  {
+    "featureType": "road.arterial",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#fdfcf8"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#f8c967"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#e9bc62"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway.controlled_access",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#e98d58"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway.controlled_access",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#db8555"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#806b63"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.line",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#dfd2ae"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.line",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#8f7d77"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.line",
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#ebe3cd"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.station",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#dfd2ae"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.station.bus",
+    "stylers": [
+      {
+        "visibility": "on"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#3e7ebc"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#3e7ebc"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#92998d"
+      }
+    ]
+  }
+],
+  {name: Styled Map});
+
+
+
+      map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 40.9006, lng: 174.8860},
+            zoom: 11,
+            mapTypeControlOptions: {
+              mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'styled_map']
+            }
+        });
+
+      map.mapTypes.set('styled_map', styledMapType);
+      map.setMapTypeId('styled_map');
+    }
+   
+//     clearMarkers();
+
+//     for (let i = 0; i < array.length; i++) {
+//         let marker = new google.maps.Marker({
+//           position: {lat: array[i].latitude, lng: array[i].longitute},
+//           map: map,
+//         });
+
+//         markers.push(marker);
+
+//         let content = `<div class="content">
+//             <h4 id="marker">${array[i].name}</h4>
+//             <img src="${array[i].image1}" class="marker-image"/>
+//             <div class="m-1">${array[i].type.toUpperCase()}</div>
+//             <div class="m-1">${array[i].address}</div>
+//             <div class="m-1 text-primary">Price: $<span>${array[i].priceNight}/night</span></div>
+//             <div class="m-1">Minimum people: <span>${array[i].minPeople}</span></div>
+//             <div class="m-1">Maximum people: <span>${array[i].maxPeople}</span></div>
+//             <div class="m-1">Minimum nights: <span>${array[i].minNights}</span></div>
+//             <div class="m-1">Maximum nights: <span>${array[i].maxNights}</span></div>
+//             </div>`
+        
+//         let infowindow = new google.maps.InfoWindow({ content: content });
+       
+//         newWindow(marker, infowindow);
+
+//         function newWindow(newMarker, newInfowindow){
+//             marker.addListener('click', function() {
+//                 if(oldwindow){
+//                     oldwindow.close();
+//                 }
+//                 newInfowindow.open(map, newMarker);
+//                 oldwindow = newInfowindow;
+//             });
+//         }
+//     }
+// } //initMap ENDS
+
 
 
 
