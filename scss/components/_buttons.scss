@@ -8,6 +8,7 @@ option[value=""][disabled] {
 
 option {
 	color: #000;
+	text-align: center;
 }
 
 button {
@@ -23,6 +24,15 @@ button::visted {
 
 
 @media only screen and (max-width: 375px) {
+#ui-datepicker-div {
+	margin: 0 auto;
+	width: 300px;
+}
+
+
+
+
+
 input {
 	height: 10vh;
 	width: 80vw;
@@ -56,6 +66,10 @@ input {
 	height: 60px;
 	width: 100px;
 	border-radius: 5px;
+}
+
+#acomList {
+	margin-top: 425px;
 }
 
 #acomLocation::visted {
