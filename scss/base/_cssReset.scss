@@ -80,6 +80,7 @@ body {
 	margin: 0 auto;
 	padding: 0;
 	width: 300px;
+	border: 3px #F2A71B solid;
 }
 
 .container__main {
@@ -90,11 +91,9 @@ body {
 }
 
 #acomStay {
-  height: 210vh;
+  height: 22vh;
   text-align: center;
   margin: 0 auto;
-  border: 2px black solid;
-  // display: none;
 }
 
 .modal {
@@ -125,8 +124,7 @@ body {
 #stay1, #stay2, #stay3 {
 	float: left; 
 	cursor: pointer;
-	width: 340px;
-	border: 2px black solid;
+	width: 330px;
 }
 
 }

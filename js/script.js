@@ -158,31 +158,6 @@ var criteria = {
 
 
 
-
-document.getElementById('acomList').addEventListener('click', function(){
-
-  var nights = dateDiff();
-  var guests = guestsAmount();
-  var place = placePick();
-
-  criteria.guestNumber = guests;
-  criteria.city = place;
-  criteria.dayNumber = nights;
-
-  console.log(criteria);
-
-  var accommodationResultList = filter(criteria);
-
-  console.log(accommodationResultList);
-
-      // document.getElementById('staySynopsis').innerHTML =
-      // '<p> You will be in ' + place + ' for ' + nights + ' nights with'  + guests + ' guests.</p>'
-});
-
-
-
-
-
 function filter(obj){
 
   // document.getElementById('acomStay').innerHTML = '';
@@ -226,70 +201,22 @@ function filter(obj){
 
 
 
-// document.getElementById('acomList').addEventListener('click', function(){
-//   console.log('show acom')
-//     // document.getElementById('stayDesc').innerHTML = " "; //to clear the container
+document.getElementById('acomList').addEventListener('click', function(){
 
-//   for(var i = 0; i < accommodation.length; i++) {
-//     if (accommodation[i].criteria === filter(criteria)) {
-//     document.getElementById('stayDesc').innerHTML
-//       += '<img src="images/accommodation/aptMain.jpg" class="acom-img">'
-//       +    '<h2 class="list-name">'
-//       +       accommodation[i].name
-//       +      '</h2>'
+  var nights = dateDiff();
+  var guests = guestsAmount();
+  var place = placePick();
 
-//       +      '<p class="stay-list">'
-//       +        accommodation[i].address
-//       +        '<br>'
+  criteria.guestNumber = guests;
+  criteria.city = place;
+  criteria.dayNumber = nights;
 
-//       +        accommodation[i].price 
-//       +      '</p>';
-//       }
-//     }
-// });
+  console.log(criteria);
 
+  var accommodationResultList = filter(criteria);
 
- // display summary of trip selection details
- // function displayA(){
-
- //   // convert date picker to string
- //   var dateStart = $.datepicker.formatDate('dd-mm-yy', start);
- //   var dateEnd = $.datepicker.formatDate('dd-mm-yy', end);
-
- //   console.log(typeof selectPlace, typeof selectGuest, typeof startDate, typeof endDate , typeof days);
-
- //   document.getElementById('stayDesc').innerHTML ='';
- //   document.getElementById('stayDesc').innerHTML = 
- //   startDate + endDate + selectGuest + selectPlace + days;
- // };
-
-
-
-
-// // var id = 101;
-// function displayAccommodation(s) {
-//   // displaystayDesc();
-
-//   var days = dateDiff();
-//   var total = accommodation[s].price * days;
-
-
-//   document.getElementById('acomStay').innerHTML
-// += '<div class="stay1" type="button" data-toggle="modal" data-target="#myModal">'
-// +		'<div class="row">'
-// +			'<center>'
-// +				'<img src="images/accommodation/aptMain.jpg">'
-// +				'<h2>' + accommodation[s].name + '</h2>'
-
-// +				'<p id="stayList">' + accommodation[s].address + ' </p>'
-// +				'<br>'
-
-// +				'<p> $' + accommodation[s].price + ' per night</p>'
-// +			'</center>'
-// +		'</div>'
-// +	'</div>';
-// };
-
+  console.log(accommodationResultList);
+});
 
 
 
@@ -297,12 +224,16 @@ function filter(obj){
 
 // Open the Modal
 function openModal() {
-  document.getElementById("#myModal").style.display = "block";
+  document.getElementById("#myModal1").style.display = "block";
+  document.getElementById("#myModal2").style.display = "block";
+  document.getElementById("#myModal3").style.display = "block";
 }
 
 // Close the Modal
 function closeModal() {
-  document.getElementById("#myModal").style.display = "none";
+  document.getElementById("#myModal1").style.display = "none";
+  document.getElementById("#myModal2").style.display = "none";
+  document.getElementById("#myModal3").style.display = "none";
 }
 
 var slideIndex = 1;
@@ -327,10 +258,109 @@ function showSlides(n) {
 
 
 
-// function openModal(){
-//   $('.modal').on('click', function(){
+
+// $("acomList").click(function() {
+//   var one = accommodationResultList;
+
+//   var three =
+//   string(one);
+//   document.getElementById("staySynopsis").innerHTML = three;
+// });
+
+
+// document.getElementById('acomList').addEventListener('click', function(){
+//   console.log('show acom')
+//     // document.getElementById('stayDesc').innerHTML = " "; //to clear the container
+//     var stayTotal = days;
+//     var priceTotal = accommodation.price * stayTotal;
+
+//   for(var i = 0; i < accommodation.length; i++) {
+//     if (accommodation[i].criteria === filter(criteria)) {
+//     document.getElementById('stayDesc').innerHTML
+//       += '<img src="images/accommodation/aptMain.jpg" class="acom-img">'
+//       +    '<h2 class="list-name">'
+//       +       accommodation[i].name
+//       +      '</h2>'
+
+//       +      '<p class="stay-list">'
+//       +        accommodation[i].address
+//       +        '<br>'
+
+//       +        accommodation[i].price 
+//       +      '</p>';
+//       }
+//     }
+// });
+// $( "acomList" ).click(function() {
+
+//   var criteria;
+
+//   $('#stay1').show();
+//   $('#stay2').show();
+//   $('#stay3').show();
+
+//     if (stay1 === ) {};
+// });
+
+
+
+
+
+ // document.getElementById('staySynopsis').innerHTML =
+ //  '<p> You will be in ' + place + ' for ' + nights + ' nights with'  + guests + ' guests.</p>'
+
+// function displayList(i){
+//   priceTotal = (accommodation[i].price * dayNumber)
+
+//   document.getElementById('acomStay').innerHTML
+//       += '<img src="images/accommodation/aptMain.jpg" class="acom-img">'
+//       +    '<h2 class="list-name">'
+//       +       accommodation[i].name
+//       +      '</h2>'
+
+//       +      '<p class="stay-list">'
+//       +        accommodation[i].address
+//       +        '<br>'
+
+//       +        accommodation[i].price 
+//       +      '</p>';
+// };
+
+
+
+
+
+// var id = 101;
+// function displayAccommodation(s) {
+//   // displaystayDesc();
+
+//   var days = dateDiff();
+//   var total = accommodation[s].price * days;
+
+
+//   document.getElementById('acomStay').innerHTML
+// += '<div class="stay1" type="button" data-toggle="modal" data-target="#myModal">'
+// +    '<div class="row">'
+// +      '<center>'
+// +        '<img src="images/accommodation/aptMain.jpg">'
+// +        '<h2>' + accommodation[s].name + '</h2>'
+
+// +        '<p id="stayList">' + accommodation[s].address + ' </p>'
+// +        '<br>'
+
+// +        '<p> $' + accommodation[s].price + ' per night</p>'
+// +      '</center>'
+// +    '</div>'
+// +  '</div>';
+// };
+
+
+
+
+
+// $('.modal').on('click', function(){
 //       document.getElementById('modalContent').innerHTML
-//         = '<div class="modal-header">'
+//         += '<div class="modal-header">'
 //         +   '<h4 class="modal-title">Central CBD Apartment</h4>'
 //         +   '<button type="button" class="close" data-dismiss="modal" id="close">&times;</button>'
 //         + '</div>'
@@ -369,8 +399,7 @@ function showSlides(n) {
 //         + '<p> Insert Cost p night </p>'
 
 //         + '</div>';
-//       }
-// )};
+//       });
 
 
 
@@ -634,47 +663,3 @@ function initMap() {
           map: map,
         });
     };
-        
-
-        // map = new google.maps.Map(document.getElementById('map'), {
-        //   center: {lat: -34.397, lng: 150.644},
-        //   zoom: 8
-        // });
-   
-//     clearMarkers();
-
-//     for (let i = 0; i < array.length; i++) {
-//         let marker = new google.maps.Marker({
-//           position: {lat: array[i].latitude, lng: array[i].longitute},
-//           map: map,
-//         });
-
-//         markers.push(marker);
-
-//         let content = `<div class="content">
-//             <h4 id="marker">${array[i].name}</h4>
-//             <img src="${array[i].image1}" class="marker-image"/>
-//             <div class="m-1">${array[i].type.toUpperCase()}</div>
-//             <div class="m-1">${array[i].address}</div>
-//             <div class="m-1 text-primary">Price: $<span>${array[i].priceNight}/night</span></div>
-//             <div class="m-1">Minimum people: <span>${array[i].minPeople}</span></div>
-//             <div class="m-1">Maximum people: <span>${array[i].maxPeople}</span></div>
-//             <div class="m-1">Minimum nights: <span>${array[i].minNights}</span></div>
-//             <div class="m-1">Maximum nights: <span>${array[i].maxNights}</span></div>
-//             </div>`
-        
-//         let infowindow = new google.maps.InfoWindow({ content: content });
-       
-//         newWindow(marker, infowindow);
-
-//         function newWindow(newMarker, newInfowindow){
-//             marker.addListener('click', function() {
-//                 if(oldwindow){
-//                     oldwindow.close();
-//                 }
-//                 newInfowindow.open(map, newMarker);
-//                 oldwindow = newInfowindow;
-//             });
-//         }
-//     }
-// } //initMap ENDS
