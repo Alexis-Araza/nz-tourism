@@ -15,6 +15,7 @@ var accommodation = [
     photo3: 'images/accommodation/apt3.jpg',
     website: 'https://www.airbnb.co.nz/rooms/28409550?adults=2&children=2&source_impression_id=p3_1575511028_xMP639FGSYUpXt8f',
     location: 'https://www.google.com/maps/search/?api=1&query=-41.292765, 174.777620',
+    guest: 2,
     minNight: 2,
     maxNight: 5,
     price: 196
@@ -34,7 +35,8 @@ var accommodation = [
     photo3: 'images/accommodation/sail3.jpg',
     website: 'https://www.airbnb.co.nz/rooms/12057365?adults=2&children=2&previous_page_section_name=1000&search_id=7f386995-966e-6fb6-5a86-ad34668757fc&federated_search_id=9faa7c54-9add-4324-b5f6-cfb6decbef48',
     location: 'https://www.google.com/maps/search/?api=1&query=-41.292917, 174.786514',
-    minNight: 2,
+    guest: 3,
+    minNight: 3,
     maxNight: 10,
     price: 200
   },
@@ -53,11 +55,20 @@ var accommodation = [
     photo3: 'images/accommodation/villa3.jpg',
     website: 'https://www.airbnb.co.nz/rooms/14168822?adults=2&children=2&guests=1&source_impression_id=p3_1575511819_gtNgz1%2BOFsU2KLrj&s_tag=tTc_nCHs',
     location: 'https://www.google.com/maps/search/?api=1&query=-41.305102, 174.831207',
-    minNight: 3,
+    guest: 4,
+    minNight: 4,
     maxNight: 15,
     price: 310
   },
 ];
+
+
+
+
+
+// $('#stay1').hide();
+// $('#stay2').hide();
+// $('#stay3').hide();
 
 
 
@@ -98,8 +109,8 @@ $("#endDate").datepicker({
 //Find the number of days between dates
 function dateDiff() {
 
-  var start = $('#startDate').datepicker('startDate');
-  var end = $('#endDate').datepicker('endDate');
+  var start = $('#startDate').datepicker('getDate');
+  var end = $('#endDate').datepicker('getDate');
   var days = (end - start)/1000/60/60/24;
 
     console.log(days);
@@ -108,23 +119,22 @@ function dateDiff() {
 
 function guestsAmount() {
 
-  var guestsString = $('#guests').val();
+  // var guestsString = $('#adults').val();
+  var guestsString = $("#adults option:selected").text();
   var guests = parseInt(guestsString);
 
-    console.log(guests);
     return guests;
 };
 
 function placePick() {
 
-  var placeString = $('#place').val();
-  var place = parseInt(placeString);
+  // var placeString = $('#place').val();
+  var place = $("#place option:selected").val();
+  // var place = parseInt(placeString);
 
     console.log(place);
     return place;
 };
-
-
 
 
 
@@ -137,6 +147,15 @@ function generalFilter() {
 };
 
 
+var criteria = {
+  dayNumber: 0,
+  guestNumber: 0,
+  city: ''
+}
+
+
+
+
 
 
 
@@ -145,198 +164,132 @@ document.getElementById('acomList').addEventListener('click', function(){
   var nights = dateDiff();
   var guests = guestsAmount();
   var place = placePick();
-  var arrivalDate = $('#startDate').datepicker({ dateFormat: 'dd-mm-yy' }).val();
-  var departDate = $('#endDate').datepicker({ dateFormat: 'dd-mm-yy' }).val();
-  saveData(arrivalDate, departDate, guests, nights);
 
-    var result = generalFilter();
-    initMap();
+  criteria.guestNumber = guests;
+  criteria.city = place;
+  criteria.dayNumber = nights;
 
-      document.getElementById('staySynopsis').innerHTML =
-      '<p> You will be in ' + place + ' for ' + nights + 'nights, between' + formatDate (arrivalDate) + ' & ' + formatDate (departDate) + ' with ' + guests + ' guests.</p>'
+  console.log(criteria);
+
+  var accommodationResultList = filter(criteria);
+
+  console.log(accommodationResultList);
+
+      // document.getElementById('staySynopsis').innerHTML =
+      // '<p> You will be in ' + place + ' for ' + nights + ' nights with'  + guests + ' guests.</p>'
 });
 
 
 
 
 
-// // function to decalre varibles, read and get value
-// function getInfo(){
+function filter(obj){
 
-//   var days, selectGuest, place, selectPlace, guest, start, end;
+  // document.getElementById('acomStay').innerHTML = '';
 
-//   place = document.getElementById('place');
-//   selectPlace = place.options[place.selectedIndex].text;
+  var result = [];
+  var nights = obj['dayNumber'];
+  var place = obj['city'];
+  var guests = obj['guestNumber'];
 
-//   guest = document.getElementById('adults');
-//   selectGuest = guest.options[guest.selectedIndex].text;
-
-//   start = $('#startDate').datepicker('startDate');
-//   end = $('#endDate').datepicker('endDate');
-
-//   days = dateDiff();
-
-// };
+  console.log(nights, place, guests);
 
 
+  for(var i=0; i< accommodation.length; i++){
+    // console.log(selectPlace,accommodation[i].city);
 
+    // if ((accommodation[i].city === place) && (accommodation[i].minNight <= nights) && (accommodation[i].maxNight >= nights)) {
+    //   result.push(accommodation[i])
+    // }
 
+    if (accommodation[i].city !== place) {
+      continue;
+    }
 
-// var selected = [];
+    if (accommodation[i].minNight > nights) {
+      continue;
+    }
 
-// // Filter the options based on user's input
-// var selectedArray =[];
+    if (accommodation[i].maxNight < nights) {
+      continue;
+    } 
+    else {
+      result.push(accommodation[i]);
+    }
 
+  }
 
-
-
-
-// function filter(){
-
-//   getInfo();
-//   console.log(selectPlace, selectGuest, days);
-//   document.getElementById('searchInput').innerHTML = '';
-
-//     for(var i=0; i< accommodation.length; i++){
-//       console.log(selectPlace,accommodation[i].city);
-
-//       if ((selectPlace === accommodation[i].city)
-//            && (days >= accommodation[i].minNight) && (days <= accommodation[i].maxNight)){
-//             console.log(accommodation[i]);
-//         	displayAccommodation(i);
-//        }
-
-//       }
-//     console.log(selectPlace, days);
-//     console.log(accommodation[i]);
-
-//     id ++;
-//   };
-
-
-
-
-
-//  // display summary of trip selection details
-//  function displaystayDesc(){
-//    getInfo();
-
-//    // convert date picker to string
-//    var dateStart = $.datepicker.formatDate('dd-mm-yy', start);
-//    var dateEnd = $.datepicker.formatDate('dd-mm-yy', end);
-
-//    console.log(typeof selectPlace, typeof selectGuest, typeof startDate, typeof endDate , typeof days);
-
-//    document.getElementById('stayDesc').innerHTML ='';
-//    document.getElementById('stayDesc').innerHTML
-//    += startDate + endDate + selectGuest + selectPlace + days;
-//  };
-
-
-
-
-// var id = 101;
-function displayAccommodation(s) {
-  displaystayDesc();
-
-  var days = dateDiff();
-  var total = accommodation[s].price * days;
-
-
-  document.getElementById('acomStay').innerHTML
-+= '<div class="stay1" type="button" data-toggle="modal" data-target="#myModal">'
-+		'<div class="row">'
-+			'<center>'
-+				'<img src="images/accommodation/aptMain.jpg">'
-+				'<h2>' + accommodation[s].name + '</h2>'
-
-+				'<p id="stayList">' + accommodation[s].address + ' </p>'
-+				'<br>'
-
-+				'<p> $' + accommodation[s].price + ' per night</p>'
-+			'</center>'
-+		'</div>'
-+	'</div>';
+  return result;
 };
 
 
 
 
 
-// // move from search to accommdation list result
 // document.getElementById('acomList').addEventListener('click', function(){
-//     validate();
-//   });
+//   console.log('show acom')
+//     // document.getElementById('stayDesc').innerHTML = " "; //to clear the container
+
+//   for(var i = 0; i < accommodation.length; i++) {
+//     if (accommodation[i].criteria === filter(criteria)) {
+//     document.getElementById('stayDesc').innerHTML
+//       += '<img src="images/accommodation/aptMain.jpg" class="acom-img">'
+//       +    '<h2 class="list-name">'
+//       +       accommodation[i].name
+//       +      '</h2>'
+
+//       +      '<p class="stay-list">'
+//       +        accommodation[i].address
+//       +        '<br>'
+
+//       +        accommodation[i].price 
+//       +      '</p>';
+//       }
+//     }
+// });
+
+
+ // display summary of trip selection details
+ // function displayA(){
+
+ //   // convert date picker to string
+ //   var dateStart = $.datepicker.formatDate('dd-mm-yy', start);
+ //   var dateEnd = $.datepicker.formatDate('dd-mm-yy', end);
+
+ //   console.log(typeof selectPlace, typeof selectGuest, typeof startDate, typeof endDate , typeof days);
+
+ //   document.getElementById('stayDesc').innerHTML ='';
+ //   document.getElementById('stayDesc').innerHTML = 
+ //   startDate + endDate + selectGuest + selectPlace + days;
+ // };
 
 
 
 
-// // show stay list
-// function validate() {
-//   place = document.getElementById('place');
-//   selectPlace = place.options[place.selectedIndex].text;
+// // var id = 101;
+// function displayAccommodation(s) {
+//   // displaystayDesc();
 
-//   guest = document.getElementById('adults');
-//   selectGuest = guest.options[guest.selectedIndex].text;
-
-//   start = $('#startDate').datepicker('startDate');
-//   end = $('#endDate').datepicker('endDate');
-
-//     filter();
-//   };
-
-// document.getElementById('acomList').addEventListener('click', function(){
-// var x = document.getElementById('acomStay');
-//   if (x.style.display === "show") {
-//     x.style.display = "block";
-//   } else {
-//     x.style.display = "show";
-//   }   
-// }
-// );
+//   var days = dateDiff();
+//   var total = accommodation[s].price * days;
 
 
+//   document.getElementById('acomStay').innerHTML
+// += '<div class="stay1" type="button" data-toggle="modal" data-target="#myModal">'
+// +		'<div class="row">'
+// +			'<center>'
+// +				'<img src="images/accommodation/aptMain.jpg">'
+// +				'<h2>' + accommodation[s].name + '</h2>'
 
+// +				'<p id="stayList">' + accommodation[s].address + ' </p>'
+// +				'<br>'
 
+// +				'<p> $' + accommodation[s].price + ' per night</p>'
+// +			'</center>'
+// +		'</div>'
+// +	'</div>';
+// };
 
-
-// console.log('location details');
-// // Depending on the number of days the user books, fees to be calculated
-
-// // $('#map').hide();
-
-// // $(document).ready(function(){
-// //   $('#details').click(function(){
-// //     $('#map').show();
-
-//     //reading user data
-//     // var place=document.getElementById('#place').value;
-//     // console.log(place);
-//     // initMap(place);
-// //   });
-
-// // });
-
-
-// // var steakQuantity = parseInt(prompt("how many steaks would you like?"));
-// // var sauceQuantity = 0;
-
-// // if (steakQuantity >= 2) {
-// // 	console.log ("You will get a free sauce on the side!");
-// // 	var sauce = prompt("would you like sauce with that?");
-// // }
-
-// // if (sauce ==="yes") {
-// // 	var steakQuantity = parseInt(prompt("how much sauce would you like?"));
-
-// // 	}
-
-
-// // console.log(steakQuantity,sauceQuantity);
-// // var steakCost = steakQuantity * 25.60 + sauceQuantity * 2;
-
-// // console.log(steakCost);
-// // document.getElementById('result').innerHTML = "steakCost=" + steakCost + sauceQuantity;
 
 
 
@@ -421,7 +374,7 @@ function showSlides(n) {
 
 
 
-
+console.log('location details');
 //Google Maps API key
 var myKey = JSON.parse(apiKey);
 console.log(myKey);
@@ -433,25 +386,255 @@ script.defer = true;
 document.getElementsByTagName('body')[0].appendChild(script);
 
 var map;
-// var markers =[];
-
-// function clearMarkers(){
-//     for (let i = 0; i < markers.length; i++) {
-//         markers[i].setMap(null);
-//     }
-// }
 
 function initMap() {
-    // var array = data.filteredAccommodation;
-    // var searchButton = document.getElementById('acomList');
     console.log('initmap here')
 
-      map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: -40.900558, lng: 174.885971},
-            zoom: 2
-            });
-    };
+      var startNZ = {lat: -40.900558, lng: 172.285971};
 
+      var map = new google.maps.Map(document.getElementById('map'), {
+            center: startNZ,
+            zoom: 5,
+            disableDefaultUI: true,
+            styles: [
+                      {"elementType": "geometry",
+                        "stylers": [
+                          {
+                            "color": "#ebe3cd"
+                          }
+                        ]
+                      },
+                      {
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                          {
+                            "color": "#523735"
+                          }
+                        ]
+                      },
+                      {
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                          {
+                            "color": "#f5f1e6"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "administrative",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                          {
+                            "color": "#c9b2a6"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "administrative.land_parcel",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                          {
+                            "color": "#dcd2be"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "administrative.land_parcel",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                          {
+                            "color": "#ae9e90"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "landscape.natural",
+                        "elementType": "geometry",
+                        "stylers": [
+                          {
+                            "color": "#dfd2ae"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "poi",
+                        "elementType": "geometry",
+                        "stylers": [
+                          {
+                            "color": "#dfd2ae"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "poi",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                          {
+                            "color": "#93817c"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "poi.park",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                          {
+                            "color": "#a5b076"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "poi.park",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                          {
+                            "color": "#447530"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "road",
+                        "elementType": "geometry",
+                        "stylers": [
+                          {
+                            "color": "#f5f1e6"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "road.arterial",
+                        "elementType": "geometry",
+                        "stylers": [
+                          {
+                            "color": "#fdfcf8"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "road.highway",
+                        "elementType": "geometry",
+                        "stylers": [
+                          {
+                            "color": "#f8c967"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                          {
+                            "color": "#e9bc62"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "road.highway.controlled_access",
+                        "elementType": "geometry",
+                        "stylers": [
+                          {
+                            "color": "#e98d58"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "road.highway.controlled_access",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                          {
+                            "color": "#db8555"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "road.local",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                          {
+                            "color": "#806b63"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "transit.line",
+                        "elementType": "geometry",
+                        "stylers": [
+                          {
+                            "color": "#dfd2ae"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "transit.line",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                          {
+                            "color": "#8f7d77"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "transit.line",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                          {
+                            "color": "#ebe3cd"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "transit.station",
+                        "elementType": "geometry",
+                        "stylers": [
+                          {
+                            "color": "#dfd2ae"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "transit.station.bus",
+                        "stylers": [
+                          {
+                            "visibility": "on"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "water",
+                        "elementType": "geometry",
+                        "stylers": [
+                          {
+                            "color": "#3e7ebc"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "water",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                          {
+                            "color": "#3e7ebc"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "water",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                          {
+                            "color": "#92998d"
+                          }
+                        ]
+                      }
+                    ]
+            });
+
+        var marker = new google.maps.Marker({
+          position: startNZ,
+          map: map,
+        });
+    };
+        
 
         // map = new google.maps.Map(document.getElementById('map'), {
         //   center: {lat: -34.397, lng: 150.644},
@@ -495,116 +678,3 @@ function initMap() {
 //         }
 //     }
 // } //initMap ENDS
-
-
-
-
-
-// //accessing apiKey from external JSON file
-// var myKey = JSON.parse(apiKey);
-// console.log(myKey[0].key);
-
-
-// //array of objects for place details
-// var locations = [
-//   {
-//     name : "Lyall Bay",
-//     place: "Wellington",
-//     distance : "5.6 Km",
-//     travelDuration: 19,
-//     lat:-41.3269,
-//     long:174.7953
-//   },
-//   {
-//     name : "Days Bay",
-//     place: "Wellington",
-//     distance : "23.5 Km",
-//     travelDuration: 40,
-//     lat:-41.2816,
-//     long:174.9068
-//   },
-//   {
-//     name : "Oriental Bay",
-//     place: "Wellington",
-//     distance : "1.6 Km",
-//     travelDuration: 7,
-//     lat:-41.2913,
-//     long:174.7941
-//   },
-// ] //end of array of objects
-
-
-// //dynamically creating script tag and appending to the html body including the apikey
-// var script = document.createElement('script');
-// script.src = 'https://maps.googleapis.com/maps/api/js?key='+ myKey[0].key ;
-// document.getElementsByTagName('body')[0].appendChild(script);
-
-// //function to bring map and its components
-// function initMap(p,d) {
-//   console.log(p,d);
-//     // var center = {lat: -41.2911449, lng: 174.7814447}; ;
-
-//     var oldwindow;
-//     var center;
-
-//     if (p === "Wellington") {
-//       center = {lat: -41.2911449, lng: 174.7814447};
-//       zoom = 14;
-//     }
-//     console.log(chosenLocation);
-
-
-//     var map = new google.maps.Map(
-//       document.getElementById("map"), {zoom: zoom, center: location});
-
-
-//     for(var i=0; i<accommodation.length; i++ ){
-//       for (var j = 0; j < d.length; j++) {
-
-
-//       console.log(d[j], accommodation[i].id);
-//       if (d[j] === accommodation[i].id) {
-
-//         console.log(accommodation[i].id);
-//          // create content dynamically
-//          var contentString
-//            = '<a href="' + accommodation[i].website + '" target="_blank"><img class="marker-img-size thumbnail" src="'+ accommodation[i].photo1 + '" alt="photo"></a>'
-//            + '<h6 class="pt-1">' + accommodation[i].name + '</h6>'
-//            + '<p>$' + accommodation[i].price + ' /night </p>';
-
-
-
-//        // create infowindow
-//      var infowindow = new google.maps.InfoWindow({ content: contentString });
-
-
-//       // position to add marker
-//       var position = {lat: accommodation[i].latitude, lng: accommodation[i].longitude};
-
-//       // create marker
-//        var myIcon = 'http://maps.google.com/mapfiles/kml/pal3/icon56.png';
-//        var marker =  new google.maps.Marker({
-//          position: position,
-//          map: map,
-//        });
-
-//        newWindow(marker, infowindow);
-
-//        function newWindow(newMarker, newInfowindow){
-
-//          newMarker.addListener('click', function() {
-
-//            if( oldwindow){
-//              oldwindow.close();
-//            }
-//            newInfowindow.open(map, newMarker);
-//            oldwindow = newInfowindow;
-//          }); // end of addListener
-
-//        } // end of newWindow function
-//      }
-//     } // end of for
-
-//  } // end of for
-
-} //initMap ENDS

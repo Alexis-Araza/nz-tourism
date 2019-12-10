@@ -1,10 +1,12 @@
 * {
 	margin: 10px;
 	padding: 0;
-	scroll-behavior: smooth; 
+	scroll-behavior: smooth;
 }
 
-
+body {
+	background: #3E7EBC;
+}
 
 
 
@@ -12,15 +14,16 @@
 
 @media only screen and (max-width: 375px) {
 
-
-
-
-
 #map {
 	height: 450px;
-	scroll-behavior: none;
+	margin: 0 auto;
+	padding: 0;
 }
 
+#map div {
+	margin: 0 auto;
+	background: none;
+}
 
 
 
@@ -82,13 +85,16 @@
 .container__main {
 	background-color: #3E7EBC;
 	margin: 0 auto;
-	height: 430vh;
+	height: 100%;
 	border-style: 0px none;
 }
 
 #acomStay {
-	margin: 0 auto;
-	padding: 0;
+  height: 210vh;
+  text-align: center;
+  margin: 0 auto;
+  border: 2px black solid;
+  // display: none;
 }
 
 .modal {
@@ -99,7 +105,7 @@
 	height: 650px;
 }
 
-.modal-dialog, .fade {
+.modal-dialog, .modal-backdrop {
 	right: 5px;
 }
 
@@ -116,15 +122,15 @@
 	margin-left: 5px;
 }
 
-.stay1, .stay2, .stay3 {
+#stay1, #stay2, #stay3 {
 	float: left; 
 	cursor: pointer;
-	border: 3px black solid;
-	background: none;
 	width: 340px;
+	border: 2px black solid;
 }
 
 }
+
 
 
 
@@ -177,3 +183,137 @@
 // 	background: none;
 // 	width: 310px;
 // }
+
+
+
+/*mobile [iPhone 6/7/8]*/
+
+#acomStay {
+
+}
+
+
+
+
+
+
+/*desktop*/
+// .row {
+// 	margin: 0 auto;
+// 	padding: 0;
+// 	width: 300px;
+// }
+
+// .container__main {
+// 	background-color: #3E7EBC;
+// 	margin: 0 auto;
+// 	height: 100%;
+// }
+
+// #acomStay {
+// 	margin: 0 auto;
+// 	padding: 0;
+// }
+
+// .modal {
+// 	margin: 0 auto;
+// 	padding: 0;
+// 	background: none;
+// 	cursor: pointer;
+// }
+
+// .modal-dialog {
+// 	margin: 0 auto;
+// 	padding: 0;
+// 	top: 100px;
+// }
+
+// .modal-content {
+// 	margin: 0 auto;
+// 	padding: 0;
+// 	width: 600px;
+// }
+
+// .fade {
+// 	margin: 0 auto;
+// }
+
+// .stay1, .stay2, .stay3 {
+// 	float: left; 
+// 	cursor: pointer;
+// 	border: 3px black solid;
+// 	background: none;
+// 	width: 310px;
+// }
+
+
+
+/*mobile [iPhone 6/7/8]*/
+
+#acomStay {
+
+}
+
+
+
+
+
+
+
+/*desktop*/
+// .row {
+// 	margin: 0 auto;
+// 	padding: 0;
+// 	width: 300px;
+// }
+
+// .container__main {
+// 	background-color: #3E7EBC;
+// 	margin: 0 auto;
+// 	height: 100%;
+// }
+
+// #acomStay {
+// 	margin: 0 auto;
+// 	padding: 0;
+// }
+
+// .modal {
+// 	margin: 0 auto;
+// 	padding: 0;
+// 	background: none;
+// 	cursor: pointer;
+// }
+
+// .modal-dialog {
+// 	margin: 0 auto;
+// 	padding: 0;
+// 	top: 100px;
+// }
+
+// .modal-content {
+// 	margin: 0 auto;
+// 	padding: 0;
+// 	width: 600px;
+// }
+
+// .fade {
+// 	margin: 0 auto;
+// }
+
+// .stay1, .stay2, .stay3 {
+// 	float: left; 
+// 	cursor: pointer;
+// 	border: 3px black solid;
+// 	background: none;
+// 	width: 310px;
+// }
+
+
+
+/*mobile [iPhone 6/7/8]*/
+
+#acomStay {
+	width: 100%;
+
+}

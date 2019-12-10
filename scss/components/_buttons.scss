@@ -38,6 +38,8 @@ tr {
 
 
 
+
+
 input {
 	height: 10vh;
 	width: 80vw;
@@ -57,16 +59,23 @@ input {
 
 
 
-.form-control {
+.form-control#adults {
 	height: 10vh;
-	width: 76.5vw;
+	width: 76.4vw;
 	color: black;
+}
+
+.form-control#place {
+	height: 10vh;
+	width: 78.5vw;
+	color: black;
+	margin-left: -10px;
 }
 
 #acomLocation, #acomList {
 	margin-top: 20px;
 	margin-left: 100px;
-	margin-bottom: 50px;
+	margin-bottom: 30px;
 	background: white;
 	height: 60px;
 	width: 100px;
@@ -87,9 +96,9 @@ input {
 
 .close {
   float: left;
-  left: 285px;
-  font-size: 50px;
-  top: 15px;
+  left: 290px;
+  font-size: 45px;
+  top: 12px;
   position: absolute;
 }
 
