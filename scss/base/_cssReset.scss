@@ -21,6 +21,7 @@
 	width: 97%;
 	height: 28em;
 	border: 2px white solid;
+	scroll-behavior: none;
 }
 
 
@@ -48,6 +49,7 @@
 	font-size: 42px;
 	margin-top: -15px;
 	margin-bottom: 15px;
+	margin-left: 2px;
 }
 
 .userLocation {
@@ -59,6 +61,16 @@
 	width: 293px;
 	margin-left: -5px;
 	text-align: center;
+}
+
+
+
+
+.first-page {
+	margin: 0 auto;
+	margin-right: -10px;
+	margin-left: -10px;
+	border: 3px black solid;
 }
 
 
@@ -88,6 +100,10 @@
 	background: none;
 	cursor: pointer;
 	height: 650px;
+}
+
+.modal-dialog, .fade {
+	right: 5px;
 }
 
 

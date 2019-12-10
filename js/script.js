@@ -160,40 +160,6 @@ document.getElementById('acomList').addEventListener('click', function(){
 
 
 
-
-// Open the Modal
-function openModal() {
-  document.getElementById("#myModal").style.display = "block";
-}
-
-// Close the Modal
-function closeModal() {
-  document.getElementById("#myModal").style.display = "none";
-}
-
-var slideIndex = 1;
-showSlides(slideIndex);
-
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-	slides[i].style.display = "none";
-  }
-  slides[slideIndex-1].style.display = "block";
-};
-
-
-
-
-
 // // function to decalre varibles, read and get value
 // function getInfo(){
 
@@ -270,28 +236,28 @@ function showSlides(n) {
 
 
 // var id = 101;
-// function displayAccommodation(s) {
-//   displaystayDesc();
+function displayAccommodation(s) {
+  displaystayDesc();
 
-//   var days = dateDiff();
-//   var total = accommodation[s].price * days;
+  var days = dateDiff();
+  var total = accommodation[s].price * days;
 
 
-//   document.getElementById('acomStay').innerHTML
-// += '<div class="stay1" type="button" data-toggle="modal" data-target="#myModal">'
-// +		'<div class="row">'
-// +			'<center>'
-// +				'<img src="images/accommodation/aptMain.jpg">'
-// +				'<h2>' + accommodation[s].name + '</h2>'
+  document.getElementById('acomStay').innerHTML
++= '<div class="stay1" type="button" data-toggle="modal" data-target="#myModal">'
++		'<div class="row">'
++			'<center>'
++				'<img src="images/accommodation/aptMain.jpg">'
++				'<h2>' + accommodation[s].name + '</h2>'
 
-// +				'<p id="stayList">' + accommodation[s].address + ' </p>'
-// +				'<br>'
++				'<p id="stayList">' + accommodation[s].address + ' </p>'
++				'<br>'
 
-// +				'<p> $' + accommodation[s].price + ' per night</p>'
-// +			'</center>'
-// +		'</div>'
-// +	'</div>';
-// };
++				'<p> $' + accommodation[s].price + ' per night</p>'
++			'</center>'
++		'</div>'
++	'</div>';
+};
 
 
 
@@ -376,13 +342,93 @@ function showSlides(n) {
 
 
 
-//Google Maps API key
-var myKey = JSON.parse(apiKey);
-console.log(myKey);
+// Open the Modal
+function openModal() {
+  document.getElementById("#myModal").style.display = "block";
+}
 
-var script = document.createElement('script');
-script.src='https://maps.googleapis.com/maps/api/js?key='+ myKey[0].key + '&callback=initMap';
-document.getElementsByTagName('body')[0].appendChild(script);
+// Close the Modal
+function closeModal() {
+  document.getElementById("#myModal").style.display = "none";
+}
+
+var slideIndex = 1;
+  showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+    }
+    slides[slideIndex-1].style.display = "block";
+};
+
+
+
+
+// function openModal(){
+//   $('.modal').on('click', function(){
+//       document.getElementById('modalContent').innerHTML
+//         = '<div class="modal-header">'
+//         +   '<h4 class="modal-title">Central CBD Apartment</h4>'
+//         +   '<button type="button" class="close" data-dismiss="modal" id="close">&times;</button>'
+//         + '</div>'
+
+//         + '<div class="mySlides">'
+//         +   '<img src="images/accommodation/apt1.jpg" class="m-img">'
+//         + '</div>'
+
+//         + '<div class="mySlides">'
+//         +   '<img src="images/accommodation/apt2.jpg" class="m-img">'
+//         + '</div>'
+
+//         + '<div class="mySlides">'
+//         +   '<img src="images/accommodation/apt3.jpg" class="m-img">'
+//         + '</div>'
+
+//         + '<a class="prev" onclick="plusSlides(-1)" style="color: #f2f2f2">&#10094;</a>'
+//         + '<a class="next" onclick="plusSlides(1)" style="color: #f2f2f2">&#10095;</a>'
+
+
+
+//         + '<div class="modal-body">'
+
+//         + '<p>'
+//         +   'One bedroom apartment with tonnes of character in one of Wellingtons most iconic central city alleyways, located only minutes walk to all on offer in the CBD and waterfront.'
+//         + '</p>'
+
+//         + '<br>'
+
+//         + '<p>'
+//         +   '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2997.710473633682!2d174.7750815795289!3d-41.2934052793744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d38afd9e763e2e1%3A0xf8fc2948976e27fb!2s28%20Egmont%20Street%2C%20Te%20Aro%2C%20Wellington%206011!5e0!3m2!1sen!2snz!4v1575824915404!5m2!1sen!2snz" width="290" height="100" frameborder="0" style="border-style: none;margin: 0 auto; padding: 0;" allowfullscreen=""></iframe>'
+//         + '</p>'
+
+//         + '<br>'
+
+//         + '<p> Insert Cost p night </p>'
+
+//         + '</div>';
+//       }
+// )};
+
+
+
+
+//Google Maps API key
+// var myKey = JSON.parse(apiKey);
+// console.log(myKey);
+
+// var script = document.createElement('script');
+// script.src='https://maps.googleapis.com/maps/api/js?key='+ myKey[0].key + '&callback=initMap';
+// document.getElementsByTagName('body')[0].appendChild(script);
 
 var map;
 // var markers =[];
@@ -396,252 +442,242 @@ var map;
 function initMap() {
     // var array = data.filteredAccommodation;
     // var searchButton = document.getElementById('acomList');
-var styleMap = new google.maps.styleMap (
-  [
-  {"elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#ebe3cd"
-      }
-    ]
-  },
-  {
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#523735"
-      }
-    ]
-  },
-  {
-    "elementType": "labels.text.stroke",
-    "stylers": [
-      {
-        "color": "#f5f1e6"
-      }
-    ]
-  },
-  {
-    "featureType": "administrative",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#c9b2a6"
-      }
-    ]
-  },
-  {
-    "featureType": "administrative.land_parcel",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#dcd2be"
-      }
-    ]
-  },
-  {
-    "featureType": "administrative.land_parcel",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#ae9e90"
-      }
-    ]
-  },
-  {
-    "featureType": "landscape.natural",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#dfd2ae"
-      }
-    ]
-  },
-  {
-    "featureType": "poi",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#dfd2ae"
-      }
-    ]
-  },
-  {
-    "featureType": "poi",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#93817c"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.park",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#a5b076"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.park",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#447530"
-      }
-    ]
-  },
-  {
-    "featureType": "road",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#f5f1e6"
-      }
-    ]
-  },
-  {
-    "featureType": "road.arterial",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#fdfcf8"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#f8c967"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#e9bc62"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway.controlled_access",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#e98d58"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway.controlled_access",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#db8555"
-      }
-    ]
-  },
-  {
-    "featureType": "road.local",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#806b63"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.line",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#dfd2ae"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.line",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#8f7d77"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.line",
-    "elementType": "labels.text.stroke",
-    "stylers": [
-      {
-        "color": "#ebe3cd"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.station",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#dfd2ae"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.station.bus",
-    "stylers": [
-      {
-        "visibility": "on"
-      }
-    ]
-  },
-  {
-    "featureType": "water",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#3e7ebc"
-      }
-    ]
-  },
-  {
-    "featureType": "water",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#3e7ebc"
-      }
-    ]
-  },
-  {
-    "featureType": "water",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#92998d"
-      }
-    ]
-  }
-],
-  {name: Styled Map});
-
-
 
       map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 40.9006, lng: 174.8860},
-            zoom: 11,
-            mapTypeControlOptions: {
-              mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'styled_map']
-            }
-        });
-
-      map.mapTypes.set('styled_map', styledMapType);
-      map.setMapTypeId('styled_map');
+            center: {lat: -40.900558, lng: 174.885971},
+            zoom: 4.8,
+            styles: [
+                      {"elementType": "geometry",
+                        "stylers": [
+                          {
+                            "color": "#ebe3cd"
+                          }
+                        ]
+                      },
+                      {
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                          {
+                            "color": "#523735"
+                          }
+                        ]
+                      },
+                      {
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                          {
+                            "color": "#f5f1e6"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "administrative",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                          {
+                            "color": "#c9b2a6"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "administrative.land_parcel",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                          {
+                            "color": "#dcd2be"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "administrative.land_parcel",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                          {
+                            "color": "#ae9e90"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "landscape.natural",
+                        "elementType": "geometry",
+                        "stylers": [
+                          {
+                            "color": "#dfd2ae"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "poi",
+                        "elementType": "geometry",
+                        "stylers": [
+                          {
+                            "color": "#dfd2ae"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "poi",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                          {
+                            "color": "#93817c"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "poi.park",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                          {
+                            "color": "#a5b076"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "poi.park",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                          {
+                            "color": "#447530"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "road",
+                        "elementType": "geometry",
+                        "stylers": [
+                          {
+                            "color": "#f5f1e6"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "road.arterial",
+                        "elementType": "geometry",
+                        "stylers": [
+                          {
+                            "color": "#fdfcf8"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "road.highway",
+                        "elementType": "geometry",
+                        "stylers": [
+                          {
+                            "color": "#f8c967"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                          {
+                            "color": "#e9bc62"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "road.highway.controlled_access",
+                        "elementType": "geometry",
+                        "stylers": [
+                          {
+                            "color": "#e98d58"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "road.highway.controlled_access",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                          {
+                            "color": "#db8555"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "road.local",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                          {
+                            "color": "#806b63"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "transit.line",
+                        "elementType": "geometry",
+                        "stylers": [
+                          {
+                            "color": "#dfd2ae"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "transit.line",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                          {
+                            "color": "#8f7d77"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "transit.line",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                          {
+                            "color": "#ebe3cd"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "transit.station",
+                        "elementType": "geometry",
+                        "stylers": [
+                          {
+                            "color": "#dfd2ae"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "transit.station.bus",
+                        "stylers": [
+                          {
+                            "visibility": "on"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "water",
+                        "elementType": "geometry",
+                        "stylers": [
+                          {
+                            "color": "#3e7ebc"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "water",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                          {
+                            "color": "#3e7ebc"
+                          }
+                        ]
+                      },
+                      {
+                        "featureType": "water",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                          {
+                            "color": "#92998d"
+                          }
+                        ]
+                      }
+                    ]
+            });
     }
    
 //     clearMarkers();

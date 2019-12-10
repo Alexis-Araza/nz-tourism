@@ -9,7 +9,8 @@
   #map {
     width: 97%;
     height: 28em;
-    border: 2px white solid; }
+    border: 2px white solid;
+    scroll-behavior: none; }
 
   .searchInput {
     height: 200vh; }
@@ -27,7 +28,8 @@
   .guest-title {
     font-size: 42px;
     margin-top: -15px;
-    margin-bottom: 15px; }
+    margin-bottom: 15px;
+    margin-left: 2px; }
 
   .userLocation {
     margin-top: 60px;
@@ -37,6 +39,12 @@
     width: 293px;
     margin-left: -5px;
     text-align: center; }
+
+  .first-page {
+    margin: 0 auto;
+    margin-right: -10px;
+    margin-left: -10px;
+    border: 3px black solid; }
 
   .row {
     margin: 0 auto;
@@ -59,6 +67,9 @@
     background: none;
     cursor: pointer;
     height: 650px; }
+
+  .modal-dialog, .fade {
+    right: 5px; }
 
   .modal-content {
     margin: 0 auto;
@@ -83,7 +94,8 @@
   height: 100vh;
   padding: 50px 0;
   text-align: center;
-  margin-top: 80px; }
+  margin-top: 80px;
+  margin: 0 auto; }
 
 .list-name {
   font-size: 35px; }
@@ -110,7 +122,13 @@ button::visted {
 @media only screen and (max-width: 375px) {
   #ui-datepicker-div {
     margin: 0 auto;
-    width: 300px; }
+    width: 300px;
+    font-size: 14px; }
+
+  tr {
+    margin: 0 auto;
+    width: 300px;
+    font-size: 10px; }
 
   input {
     height: 10vh;
@@ -169,7 +187,7 @@ button::visted {
     top: 36%;
     width: auto;
     padding: 10px;
-    margin-top: -50px;
+    margin-top: -80px;
     font-weight: bold;
     font-size: 20px;
     transition: 0.6s ease;
