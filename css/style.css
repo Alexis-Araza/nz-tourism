@@ -26,11 +26,11 @@ body {
   .userGuest {
     margin-top: 40px; }
 
-  .stay-title {
+  .stayTitle {
     font-size: 42px;
     margin-bottom: 10px; }
 
-  .guest-title {
+  .guestTitle {
     font-size: 42px;
     margin-top: -15px;
     margin-bottom: 15px;
@@ -45,7 +45,7 @@ body {
     margin-left: -5px;
     text-align: center; }
 
-  .first-page {
+  .firstPage {
     margin: 0 auto;
     margin-right: -10px;
     margin-left: -10px;
@@ -57,7 +57,7 @@ body {
     width: 300px;
     border: 3px #F2A71B solid; }
 
-  .container__main {
+  .containerMain {
     background-color: #3E7EBC;
     margin: 0 auto;
     height: 100%;
@@ -75,9 +75,6 @@ body {
     cursor: pointer;
     height: 650px; }
 
-  .modal-dialog, .modal-backdrop {
-    right: 5px; }
-
   .modal-content {
     margin: 0 auto;
     padding: 0;
@@ -86,7 +83,7 @@ body {
   .fade {
     margin: 0 auto;
     padding: 0;
-    margin-left: 5px; }
+    margin-left: 0.5px; }
 
   #stay1, #stay2, #stay3 {
     float: left;
@@ -98,26 +95,23 @@ body {
 /*mobile [iPhone 6/7/8]*/
 /*desktop*/
 /*mobile [iPhone 6/7/8]*/
-#acomStay {
-  width: 100%; }
-
 /*mobile [iPhone 6/7/8]*/
-.list-name {
+.listName {
   font-size: 35px; }
 
-.stay-list {
+.stayList {
   font-size: 26px; }
 
-.modal-title {
+.modalTitle {
   font-size: 20px; }
 
-.modal-body {
+.modalBody {
   font-size: 15px;
   margin: 0 auto; }
 
-.m-para {
+.mPara {
   text-align: center;
-  font-size: 20px; }
+  font-size: 18.5px; }
 
 #staySynopsis {
   height: 100px; }
@@ -142,12 +136,20 @@ button::visted {
   #ui-datepicker-div {
     margin: 0 auto;
     width: 300px;
-    font-size: 14px; }
+    font-size: 19px; }
 
-  tr {
+  .ui-datepicker-prev, .ui-datepicker-next {
+    margin-top: 1px; }
+
+  .ui-datepicker th {
     margin: 0 auto;
-    width: 300px;
-    font-size: 10px; }
+    padding: 0;
+    font-size: 15px; }
+
+  .ui-datepicker td {
+    margin: 0 auto;
+    padding: 0;
+    font-size: 11px; }
 
   input {
     height: 10vh;
@@ -196,12 +198,12 @@ button::visted {
     position: absolute; } }
 /*mobile [iPhone 6/7/8]*/
 @media only screen and (max-width: 375px) {
-  .acom-img {
+  .acomImg {
     margin: 0 auto;
     padding: 0;
     height: 180px; }
 
-  .m-img {
+  .mImg {
     height: 212px; }
 
   /* Next & previous buttons */
