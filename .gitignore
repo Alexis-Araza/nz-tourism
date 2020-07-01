@@ -7,3 +7,6 @@ jquery-ui-themes-1.12.1
 
 #ignore bootstrap
 bootstrap-4.3.1-dist
+
+#ignore config apiKey
+js/config.json
