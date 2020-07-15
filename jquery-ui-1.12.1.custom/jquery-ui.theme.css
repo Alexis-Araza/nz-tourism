@@ -33,7 +33,7 @@
 }
 .ui-widget-content {
 	border: 1px solid #a6c9e2;
-	background: #3E7EBC;
+	background: #D8D9D7;
 	color: #f2f2f2;
 }
 .ui-widget-content a {
@@ -41,7 +41,7 @@
 }
 .ui-widget-header {
 	border: 1px solid #4297d7;
-	background: #3E7EBC url("images/ui-bg_highlight-soft_55_3E7EBC_1x100.png") 50% 50% repeat-x;
+	background: #D8D9D7 url("images/ui-bg_highlight-soft_55_3E7EBC_1x100.png") 50% 50% repeat-x;
 	color: #ffffff;
 	font-weight: bold;
 }

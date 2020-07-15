@@ -4,7 +4,7 @@
   scroll-behavior: smooth; }
 
 body {
-  background: #3E7EBC; }
+  background: #D8D9D7; }
 
 /*mobile [iPhone 6/7/8]*/
 @media only screen and (max-width: 375px) {
@@ -58,7 +58,7 @@ body {
     border: 3px #F2A71B solid; }
 
   .containerMain {
-    background-color: #3E7EBC;
+    background-color: #D8D9D7;
     margin: 0 auto;
     height: 100%;
     border-style: 0px none; }
@@ -221,7 +221,7 @@ button::visted {
     border-radius: 0 3px 3px 0;
     user-select: none;
     -webkit-user-select: none;
-    background: #3E7EBC; }
+    background: #D8D9D7; }
 
   /* Position the "next button" to the right */
   .next {
