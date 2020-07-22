@@ -371,18 +371,14 @@ openModal();
 
 
 
-// // Open the Modal
+// Open the Modal
 // function openModal() {
-//   document.getElementById("#myModal1").style.display = "block";
-//   document.getElementById("#myModal2").style.display = "block";
-//   document.getElementById("#myModal3").style.display = "block";
+//   document.getElementById("#myModal").style.display = "block";
 // }
 
 // // Close the Modal
 // function closeModal() {
-//   document.getElementById("#myModal1").style.display = "none";
-//   document.getElementById("#myModal2").style.display = "none";
-//   document.getElementById("#myModal3").style.display = "none";
+//   document.getElementById("#myModal").style.display = "none";
 // }
 
 var slideIndex = 1;
@@ -407,12 +403,12 @@ function showSlides(n) {
 // display modal
 var totalPrice = 0;
 var checkboxArray = [];
-function openModal(){
-  $('#acomImg').on('click', function(){
+function openModal(accommodation){
+  $('.acomImg').on('click', function(){
     console.log(this.id);
-    $('.myModal').show();
+    $('#myModal').show();
 
-      document.getElementById('modalContent').innerHTML
+      document.getElementById('modal-content').innerHTML
         += '<div class="modal-header">'
         +   '<h4 class="modal-title"> ' + name + ' </h4>'
         +   '<button type="button" class="close" data-dismiss="modal" id="close">&times;</button>'
@@ -465,7 +461,7 @@ function openModal(){
 }
 
 $('#close').on('click', function(){
-  $('.my-modal').hide();
+  $('#myModal').hide();
 });
 
 
