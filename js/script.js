@@ -3,6 +3,10 @@ console.log('NZ Tourism');
 var myKey = JSON.parse(apiKey);//convert json data into js object
 var map;//declaring map variable at the start of js to show it is a global variable
 
+
+
+
+
 //creating a script element dynamically to use the API key securely from the seperate JSON file
 var script = document.createElement('script');
 script.src = 'https://maps.googleapis.com/maps/api/js?key=' + myKey[0].key + '&callback=initMap';
@@ -185,11 +189,13 @@ $("#startDate").datepicker({
   }
 });
 
-
 $("#endDate").datepicker({
   dateFormat: 'yy-mm-dd',
   changeMonth: true
 });
+
+
+
 
 
 //Find the number of days between dates
@@ -205,133 +211,148 @@ function dateDiff() {
 
 
 
+
+
+//Find the amount of guests
 var guest;
+function guestsAmount() {
 
-// function guestsAmount() {
+  var guestsString = $("#adults").val();
+  var guests = parseInt(guestsString);
 
-//   var guestsString = $("#adults option:selected").text();
-//   var guests = parseInt(guestsString);
-
-//     return guests;
-// };
-
-// function placePick() {
-
-//   var place = $("#place option:selected").val();
-//   var place = parseInt(placeString);
-
-//     console.log(place);
-//     return place;
-// };
-
-
-
-// function generalFilter() {
-//   var result = filterGuests(accommodation); 
-//   result = filterNights(result);
-//   displayOptions(result);
-//   data.filteredAccommodation = result;
-//   return result;
-// };
-
-
-// var criteria = {
-//   dayNumber: 0,
-//   guestNumber: 0,
-//   city: ''
-// }
+    console.log(guests);
+    return guests;
+};
 
 
 
 
 
+// Find the chosen Place
+function placePick() {
 
-// function filter(obj){
+  var place = $("#place").val();
+  var place = (place);
 
-//   // document.getElementById('acomStay').innerHTML = '';
-
-//   var result = [];
-//   var days = obj['dayNumber'];
-//   var place = obj['city'];
-//   var guests = obj['guestNumber'];
-
-//   console.log(nights, place, guests);
-
-
-//   for(var i=0; i< accommodation.length; i++){
-//     console.log(selectPlace,accommodation[i].city);
-
-//     if ((accommodation[i].city === place) && (accommodation[i].minNight <= days) && (accommodation[i].maxNight >= days)) {
-//       result.push(accommodation[i])
-//     }
-
-//     if (accommodation[i].city !== place) {
-//       continue;
-//     }
-
-//     if (accommodation[i].minNight > days) {
-//       continue;
-//     }
-
-//     if (accommodation[i].maxNight < days) {
-//       continue;
-//     } 
-//     else {
-//       result.push(accommodation[i]);
-//     }
-
-//   }
-
-//   return result;
-// };
-
-
-
-
-// //check accomodation filter results
-// document.getElementById('acomList').addEventListener('click', function(){
-
-//   var days = dateDiff();
-//   var guests = guestsAmount();
-//   var place = placePick();
-
-//   criteria.guestNumber = guests;
-//   criteria.city = place;
-//   criteria.dayNumber = days;
-
-//   console.log(criteria);
-
-//   var accommodationResultList = filter(criteria);
-
-//   console.log(accommodationResultList);
-// });
+    console.log(place);
+    return place;
+};
 
 
 
 
 
-document.getElementById('acomList').addEventListener('click', function(){
-  guest = document.getElementById('adults').value;
-  var checkboxArray = document.querySelectorAll('input[type=checkbox]:checked');
-  console.log(checkboxArray);
-  foodSum = 0;
-  var foodValue = 0;
-  for (var i = 0; i < checkboxArray.length; i++) {
-    foodValue = parseInt(checkboxArray[i].value);
-    console.log(foodValue);
-    foodSum = foodSum + foodValue;
-    console.log(foodSum);
-  }
-  document.getElementById('staySynopsis').innerHTML = '';
-  for (var j = 0; j < accommodation.length; j++) {
-    if ((parseInt(guest) >= accommodation[j].minPeople)
-    && (parseInt(guest) <= accommodation[j].maxPeople)
-    && (days >= accommodation[j].minStay)
-    && (days <= accommodation[j].maxStay)){
-      displayArray(j);
+function generalFilter() {
+  var result = filterGuests(accommodation); 
+  result = filterNights(result);
+  displayOptions(result);
+  data.filteredAccommodation = result;
+  return result;
+};
+
+
+
+
+
+var criteria = {
+  dayNumber: 0,
+  guestNumber: 0,
+  city: ''
+};
+
+
+
+
+
+// Filter using the selected details
+function filter(obj){
+
+  document.getElementById('acomStay').innerHTML = '';
+
+  var result = [];
+  var days = obj['dayNumber'];
+  var place = obj['city'];
+  var guests = obj['guestNumber'];
+
+  console.log(days, place, guests);
+
+
+  for(var i=0; i< accommodation.length; i++){
+    console.log(place,accommodation[i].city);
+
+    if ((accommodation[i].city === place) && (accommodation[i].minNight <= days) && (accommodation[i].maxNight >= days)) {
+      console.log('high');
+      result.push(accommodation[i]);
+      console.log(result);
+          displayArray(i);
     }
+
+    if (accommodation[i].city !== place) {
+      continue;
+    }
+
+    if (accommodation[i].minNight > days) {
+      continue;
+    }
+
+    if (accommodation[i].maxNight < days) {
+      continue;
+    } 
+    else {
+      result.push(accommodation[i]);
+    }
+
   }
+
+  return result;
+};
+
+
+
+
+//check accomodation filter results
+document.getElementById('acomList').addEventListener('click', function(){
+  var days = dateDiff();
+  var guests = guestsAmount();
+  var place = placePick();
+
+  criteria.guestNumber = guests;
+  criteria.city = place;
+  criteria.dayNumber = days;
+
+  console.log(criteria);
+
+  var accommodationResultList = filter(criteria);
+
+  console.log(accommodationResultList);
 });
+
+
+
+
+
+// document.getElementById('acomList').addEventListener('click', function(){
+//   guest = document.getElementById('adults').value;
+//   var checkboxArray = document.querySelectorAll('input[type=checkbox]:checked');
+//   // console.log(checkboxArray);
+//   foodSum = 0;
+//   var foodValue = 0;
+//   for (var i = 0; i < checkboxArray.length; i++) {
+//     foodValue = parseInt(checkboxArray[i].value);
+//     console.log(foodValue);
+//     foodSum = foodSum + foodValue;
+//     console.log(foodSum);
+//   }
+//   document.getElementById('resultStay').innerHTML = ''
+//   for (var j = 0; j < accommodation.length; j++) {
+//     if ((parseInt(guest) >= accommodation[j].minPeople)
+//     && (parseInt(guest) <= accommodation[j].maxPeople)
+//     && (days >= accommodation[j].minStay)
+//     && (days <= accommodation[j].maxStay)){
+//       displayArray(j);
+//     }
+//   }
+// });
 
 
 
@@ -348,22 +369,22 @@ function myArray(accommodation){
     displayArray(i);
   }
 }
-myArray(accommodation);
+
 function displayArray(s){
-  document.getElementById('staySynopsis').innerHTML
-+= '<div id="stay" type="button" data-toggle="modal" data-target="#myModal">'
-+    '<div class="row">'
-+     '<div id="stayDesc">' 
-+      '<center>'
-+        '<img src=" ' + accommodation[s].mainPhoto +' " class="acomImg">'
-+        '<h2>' + accommodation[s].name + '</h2>'
-+        '<p id="stayList">' + accommodation[s].address + ' </p>'
-+        '<br>'
-+        '<p> $' + accommodation[s].price + ' per night</p>'
-+      '</center>'
-+     '</div>'
-+    '</div'
-+   '</div>';
+  document.getElementById('resultStay').innerHTML +=
+ '<div id="stay" type="button" data-toggle="modal" data-target="#myModal">' +
+    '<div class="row">' +
+     '<div id="stayDesc">' +
+      '<center>' +
+        '<img src=" ' + accommodation[s].mainPhoto +' " class="acomImg">' +
+        '<h2>' + accommodation[s].name + '</h2>' +
+        '<p id="stayList">' + accommodation[s].address + ' </p>' +
+        '<br>' +
+        '<p> $' + accommodation[s].price + ' per night</p>' +
+      '</center>' +
+     '</div>' +
+    '</div' +
+   '</div>';
 openModal();
 }
 
@@ -372,17 +393,17 @@ openModal();
 
 
 // Open the Modal
-// function openModal() {
-//   document.getElementById("#myModal").style.display = "block";
-// }
+function openModal() {
+  document.getElementById("#myModal").style.display = "block";
+}
 
-// // Close the Modal
-// function closeModal() {
-//   document.getElementById("#myModal").style.display = "none";
-// }
+// Close the Modal
+function closeModal() {
+  document.getElementById("#myModal").style.display = "none";
+}
 
 var slideIndex = 1;
-  showSlides(slideIndex);
+// showSlides(slideIndex);
 
 // Next/previous controls
 function plusSlides(n) {
@@ -408,55 +429,55 @@ function openModal(accommodation){
     console.log(this.id);
     $('#myModal').show();
 
-      document.getElementById('modal-content').innerHTML
-        += '<div class="modal-header">'
-        +   '<h4 class="modal-title"> ' + name + ' </h4>'
-        +   '<button type="button" class="close" data-dismiss="modal" id="close">&times;</button>'
-        + '</div>'
+      document.getElementById('modal-content').innerHTML +=
+         '<div class="modal-header">' +
+           '<h4 class="modal-title"> ' + accommodation.name + ' </h4>' +
+           '<button type="button" class="close" data-dismiss="modal" id="close">&times;</button>' +
+         '</div>' +
 
-        + '<div class="mySlides">'
-        +   '<img src=" ' + photo1 + ' " class="m-img">'
-        + '</div>'
+         '<div class="mySlides">' +
+           '<img src=" ' + accommodation.photo1 + ' " class="m-img">' +
+         '</div>' +
 
-        + '<div class="mySlides">'
-        +   '<img src=" ' + photo2 + ' " class="m-img">'
-        + '</div>'
+         '<div class="mySlides">' +
+           '<img src=" ' + accommodation.photo2 + ' " class="m-img">' +
+         '</div>' +
 
-        + '<div class="mySlides">'
-        +   '<img src=" ' + photo3 + ' " class="m-img">'
-        + '</div>'
+         '<div class="mySlides">' +
+           '<img src=" ' + accommodation.photo3 + ' " class="m-img">' +
+         '</div>' +
 
-        + '<a class="prev" onclick="plusSlides(-1)" style="color: #f2f2f2">&#10094;</a>'
-        + '<a class="next" onclick="plusSlides(1)" style="color: #f2f2f2">&#10095;</a>'
+         '<a class="prev" onclick="plusSlides(-1)" style="color: #f2f2f2">&#10094;</a>' +
+         '<a class="next" onclick="plusSlides(1)" style="color: #f2f2f2">&#10095;</a>' +
 
 
 
-        + '<div class="modal-body">'
+         '<div class="modal-body">' +
 
-        + '<p>'
-        +   ' + desc + '
-        + '</p>'
+         '<p>' +
+           ' + desc + ' +
+         '</p>' +
 
-        + '<br>'
+         '<br>' +
 
- + '<select id="mealSelect" class="form-control">'
-   +             '<option selected>Choose Meal Options</option>'
-   +             '<option value="breakfast">Breakfast</option>'
-   +             '<option value="lunch">Lunch</option>'
-   +             '<option value="dinner">Dinner</option>'
-   +             '<option value="all">Breakfast, Lunch & Dinner</option>'
-   +             '<option value="none">No Meal</option>'
-   +            '</select>'
+  '<select id="mealSelect" class="form-control">' +
+                '<option selected>Choose Meal Options</option>' +
+                '<option value="breakfast">Breakfast</option>' +
+                '<option value="lunch">Lunch</option>' +
+                '<option value="dinner">Dinner</option>' +
+                '<option value="all">Breakfast, Lunch & Dinner</option>' +
+               '<option value="none">No Meal</option>' +
+               '</select>'
 
-        + '<p>'
-        +   ' + location + '
-        + '</p>'
+         '<p>' +
+           ' + location + ' +
+         '</p>' +
 
-        + '<br>'
+         '<br>' +
 
-        + '<div id="compTotal" class="mPara"> $ ' + total + ' </div> '
+         '<div id="compTotal" class="mPara"> $ ' + total + ' </div> ' +
 
-        + '</div>';
+         '</div>';
 });
 }
 
@@ -467,16 +488,6 @@ $('#close').on('click', function(){
 
 
 
-console.log('location details');
-//Google Maps API key
-// var myKey = JSON.parse(apiKey);
-// console.log(myKey);
-
-// var script = document.createElement('script');
-// script.src='https://maps.googleapis.com/maps/api/js?key='+ myKey[0].key + '&callback=initMap';
-// script.async = true;
-// script.defer = true;
-// document.getElementsByTagName('body')[0].appendChild(script);
 
 var map;
 
