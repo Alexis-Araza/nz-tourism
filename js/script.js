@@ -71,6 +71,91 @@ var accommodation = [
     maxNight: 15,
     price: 310
   },
+
+  {
+    id: 104,
+    name: 'Entire AKL Apartment',
+    address: '105 Greys Avenue, Auckland CBD, Auckland 1010',
+    city: 'Auckland',
+    desc: 'Our brand new modern contemporary one-bedroom studio in Auckland CBD.',
+    latitude : -36.854327,
+    longitude : 174.760715,
+    meals: {breakfast:20, lunch:20, dinner:20, all:80, noMeal: 0},
+    mainPhoto: 'images/accommodation/aklMain.png',
+    photo1: 'images/accommodation/akl1.png',
+    photo2: 'images/accommodation/akl2.png',
+    photo3: 'images/accommodation/akl3.png',
+    website: 'https://www.airbnb.co.nz/rooms/44312759?adults=2&location=Auckland%20Central%2C%20Auckland&check_in=2020-07-23&check_out=2020-07-26&source_impression_id=p3_1595380794_cTZ9s2wmHpbzm2yu&guests=1',
+    location: 'https://www.google.com/maps/place/105+Greys+Avenue,+Auckland+CBD,+Auckland+1010/@-36.8543305,174.7601613,19z/data=!3m1!4b1!4m5!3m4!1s0x6d0d47ef258c2adb:0x1be98abd47de52f9!8m2!3d-36.8543305!4d174.7607085',
+    guest: 2,
+    minNight: 3,
+    maxNight: 10,
+    price: 101
+  },
+
+    {
+    id: 105,
+    name: 'Shabby Meets Chic',
+    address: '2D Waterview Road, Devonport, Auckland 0624',
+    city: 'Auckland',
+    desc: 'Our villa offers you a separate self contained apartment with a large sunny patio and garden.',
+    latitude : -36.825569, 
+    longitude : 174.788580,
+    meals: {breakfast:20, lunch:30, dinner:45, all:120, noMeal: 0},
+    mainPhoto: 'images/accommodation/chicMain.png',
+    photo1: 'images/accommodation/chic1.png',
+    photo2: 'images/accommodation/chic2.png',
+    photo3: 'images/accommodation/chic3.png',
+    website: 'https://www.airbnb.co.nz/rooms/15112007?adults=3&location=Auckland%20Central%2C%20Auckland&check_in=2020-07-23&check_out=2020-07-26&source_impression_id=p3_1595381803_EaEvU70m26L5I%2FsG&guests=1',
+    location: 'https://www.google.com/maps/place/2D+Waterview+Road,+Stanley+Point,+Auckland+0624/@-36.8254696,174.787961,19z/data=!3m1!4b1!4m5!3m4!1s0x6d0d37eec90b0123:0xf967f6e75a548538!8m2!3d-36.8254696!4d174.7885082',
+    guest: 3,
+    minNight: 2,
+    maxNight: 10,
+    price: 145
+  },
+
+      {
+    id: 106,
+    name: 'Central Christchurch Cottage',
+    address: '275 Worcester Street, Christchurch Central, Christchurch 8011',
+    city: 'Christchurch',
+    desc: 'This cute cottage with off street garaged parking makes for an excellent centrally located place to stay in Christchurch.',
+    latitude : -43.5307912,
+    longitude : 172.6485329,
+    meals: {breakfast:20, lunch:50, dinner:35, all:100, noMeal: 0},
+    mainPhoto: 'images/accommodation/chchMain.png',
+    photo1: 'images/accommodation/chch1.png',
+    photo2: 'images/accommodation/chch2.png',
+    photo3: 'images/accommodation/chch3.png',
+    website: 'https://www.airbnb.co.nz/rooms/8846958?adults=4&location=Christchurch%20Central%2C%20Christchurch%2C%20Canterbury&check_in=2020-07-23&check_out=2020-07-26&source_impression_id=p3_1595382996_ArKZtbiJ3emeUH%2BM&guests=1',
+    location: 'https://www.google.com/maps/place/275+Worcester+Street,+Christchurch+Central,+Christchurch+8011/@-43.5307912,172.6485329,19z/data=!4m13!1m7!3m6!1s0x6d31898a1d5b67d7:0xf1ec213cf5a7fd92!2s275+Worcester+Street,+Christchurch+Central,+Christchurch+8011!3b1!8m2!3d-43.5307912!4d172.6490801!3m4!1s0x6d31898a1d5b67d7:0xf1ec213cf5a7fd92!8m2!3d-43.5307912!4d172.6490801',
+    guest: 4,
+    minNight: 2,
+    maxNight: 15,
+    price: 169
+  },
+
+      {
+    id: 107,
+    name: 'Loft Apartment - Edge of CBD',
+    address: '430 Madras Street, St Albans, Christchurch 8014',
+    city: 'Christchurch',
+    desc: 'This is a spacious 1 bedroom loft style apartment with a king bed, that is completely self contained. It has secure off street parking, your own private courtyard and a fully equipped kitchen.',
+    latitude : -43.5200787,
+    longitude : 172.6408545,
+    meals: {breakfast:15, lunch:20, dinner:35, all:90, noMeal: 0},
+    mainPhoto: 'images/accommodation/loftMain.png',
+    photo1: 'images/accommodation/loft1.png',
+    photo2: 'images/accommodation/loft2.png',
+    photo3: 'images/accommodation/loft3.png',
+    website: 'https://www.airbnb.co.nz/rooms/36955293?adults=2&location=Christchurch%20Central%2C%20Christchurch%2C%20Canterbury&check_in=2020-07-23&check_out=2020-07-26&source_impression_id=p3_1595383015_WZGPhS%2FdYAQdA9Ik&guests=1',
+    location: 'https://www.google.com/maps/place/430+Madras+Street,+St+Albans,+Christchurch+8014/@-43.5200787,172.6408545,17z/data=!3m1!4b1!4m5!3m4!1s0x6d318a2bf7b76c3f:0x618df7845fe948c8!8m2!3d-43.5200787!4d172.6430432',
+    guest: 2,
+    minNight: 3,
+    maxNight: 14,
+    price: 85
+  }
+
 ];
 
 
@@ -253,26 +338,32 @@ document.getElementById('acomList').addEventListener('click', function(){
 
 
 //display accomodations witin filter selections
-function myArray(){
+function myArray(accommodation){
   document.getElementById('staySynopsis').innerHTML = '';
   for (var i = 0; i < accommodation.length; i++) {
     console.log(accommodation.length);
-    console.log(accommodation[i].ref);
+    console.log(accommodation[i].id);
     if (parseInt(guest) >= accommodation[i].guests) {
     }
     displayArray(i);
   }
 }
-myArray();
+myArray(accommodation);
 function displayArray(s){
   document.getElementById('staySynopsis').innerHTML
-+=      '<center>'
-+        '<img src="images/accommodation/aptMain.jpg">'
++= '<div id="stay" type="button" data-toggle="modal" data-target="#myModal">'
++    '<div class="row">'
++     '<div id="stayDesc">' 
++      '<center>'
++        '<img src=" ' + accommodation[s].mainPhoto +' " class="acomImg">'
 +        '<h2>' + accommodation[s].name + '</h2>'
 +        '<p id="stayList">' + accommodation[s].address + ' </p>'
 +        '<br>'
 +        '<p> $' + accommodation[s].price + ' per night</p>'
-+      '</center>';
++      '</center>'
++     '</div>'
++    '</div'
++   '</div>';
 openModal();
 }
 
